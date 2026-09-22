@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
+export const revalidate = 60;
+
 export default async function BlogIndexPage() {
   const blogPosts = await getPublishedBlogPosts();
 

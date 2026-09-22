@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function AdminLoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = React.useState("");
@@ -71,5 +71,13 @@ export default function AdminLoginPage() {
         </form>
       </CardContent>
     </Card>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <React.Suspense fallback={<Card className="w-full max-w-sm h-64" />}>
+      <LoginForm />
+    </React.Suspense>
   );
 }
