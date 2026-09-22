@@ -1,69 +1,211 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Zap, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
+import { GlobalSearch } from "@/components/search/global-search";
+import { categories } from "@/lib/data/categories";
+import { CategoryCard } from "@/components/tools/category-card";
+import { ToolCard } from "@/components/tools/tool-card";
+import { getFeaturedTools, getPopularTools, liveTools } from "@/lib/data/tools";
+import { Accordion } from "@/components/ui/accordion";
+import { AdBanner } from "@/components/ads";
+import { RecentlyUsedSection } from "@/components/tools/recently-used-section";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Toolwise – Simple, Fast & Free Online Tools",
+  description:
+    "Free calculators, developer utilities, PDF tools, image tools, AI tools and everyday productivity tools — fast, private and easy to use. No sign-up required.",
+  alternates: { canonical: "/" },
+};
+
+const popularChips = [
+  { label: "EMI Calculator", href: "/calculators/emi-calculator" },
+  { label: "JSON Formatter", href: "/developer-tools/json-formatter" },
+  { label: "PDF Compressor", href: "/pdf-tools/compress-pdf" },
+  { label: "Image Compressor", href: "/image-tools/image-compressor" },
+  { label: "Salary Calculator", href: "/calculators/salary-calculator" },
+  { label: "QR Generator", href: "/developer-tools/qr-generator" },
+];
+
+const trustPoints = [
+  {
+    icon: Zap,
+    title: "Fast by default",
+    description: "Most tools run instantly in your browser — no waiting on a server round-trip.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Private where it matters",
+    description: "File-based tools process locally in your browser wherever technically possible.",
+  },
+  {
+    icon: InfinityIcon,
+    title: "Free, no sign-up",
+    description: "Every tool is free to use. No account, no email, no paywall in the way.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Are all the tools on Toolwise really free?",
+    answer:
+      "Yes. Every tool on Toolwise is free to use with no sign-up required. The site is supported by unobtrusive advertising, never by paywalling core functionality.",
+  },
+  {
+    question: "Do I need to create an account?",
+    answer:
+      "No. You can use every tool anonymously. Some conveniences like recently-used tools are saved locally in your browser, not tied to an account.",
+  },
+  {
+    question: "Are my files or data uploaded to a server?",
+    answer:
+      "Many tools — calculators, JSON/text utilities, image and PDF processing — run entirely in your browser and never upload your data. AI tools securely send only the text you enter to generate a response. Each tool page states exactly how it handles your data.",
+  },
+  {
+    question: "How often are new tools added?",
+    answer:
+      "Toolwise is built on a system designed to support thousands of tools without a redesign, and new tools are added regularly across every category.",
+  },
+];
+
+export default function HomePage() {
+  const featured = getFeaturedTools(6);
+  const popular = getPopularTools(8);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <section className="relative overflow-hidden border-b border-border">
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-60"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 50% 0%, color-mix(in oklch, var(--primary) 12%, transparent), transparent)",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            Everything you need.
+            <br />
+            <span className="brand-gradient-text">One simple toolkit.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+            Free calculators, developer utilities, PDF tools, AI tools and everyday productivity
+            tools — fast, private and easy to use.
+          </p>
+
+          <div className="mx-auto mt-8 max-w-xl">
+            <GlobalSearch />
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {popularChips.map((chip) => (
+              <Link
+                key={chip.href}
+                href={chip.href}
+                className="rounded-full border border-border bg-surface-elevated px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+              >
+                {chip.label}
+              </Link>
+            ))}
+          </div>
+
+          <p className="mt-6 text-xs text-muted-foreground">
+            {liveTools.length}+ free tools and counting — no sign-up required.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="border-b border-border bg-surface-sunken">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="grid gap-6 sm:grid-cols-3">
+            {trustPoints.map((point) => (
+              <div key={point.title} className="flex items-start gap-3">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <point.icon className="size-5" />
+                </span>
+                <div>
+                  <h3 className="font-medium text-foreground">{point.title}</h3>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{point.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-8 flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight text-foreground">Browse by category</h2>
+            <p className="mt-1 text-muted-foreground">Find the right tool fast, organised the way you think about them.</p>
+          </div>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((cat) => (
+            <CategoryCard key={cat.slug} category={cat} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center">
+          <AdBanner />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-8 flex items-end justify-between">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Featured tools</h2>
+          <Link href="/calculators" className="hidden items-center gap-1 text-sm font-medium text-primary hover:underline sm:flex">
+            Explore all
+            <ArrowRight className="size-3.5" />
+          </Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
+        </div>
+      </section>
+
+      <RecentlyUsedSection />
+
+      <section className="border-y border-border bg-surface-sunken">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <h2 className="mb-8 text-2xl font-bold tracking-tight text-foreground">Popular right now</h2>
+          <div className="no-scrollbar -mx-4 flex gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-4 sm:px-0 sm:pb-0">
+            {popular.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} className="min-w-64 sm:min-w-0" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+          A toolkit built for everyday work
+        </h2>
+        <div className="mt-4 space-y-4 text-muted-foreground">
+          <p>
+            Toolwise brings together calculators, developer utilities, PDF and image tools, AI-assisted writing
+            tools and student calculators in a single, consistent product — instead of hunting across a dozen
+            ad-heavy sites for each one. Every tool is designed to be used without an account: open it, get your
+            answer, and move on.
+          </p>
+          <p>
+            Where a calculation or conversion can run entirely in your browser — like formatting JSON, generating a
+            UUID, or compressing an image — it does, which means it&apos;s fast and your data never has to leave
+            your device. Tools that genuinely need AI, like the resume builder, clearly explain what&apos;s sent to
+            generate a response.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Frequently Asked Questions</h2>
+        <div className="mt-4 rounded-xl border border-border bg-surface-elevated px-5">
+          <Accordion items={faqs} />
+        </div>
+      </section>
+    </>
   );
 }
