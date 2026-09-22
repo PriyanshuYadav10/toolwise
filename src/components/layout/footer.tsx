@@ -26,6 +26,17 @@ export function Footer() {
               Simple, fast &amp; free tools for everyday work — calculators, developer utilities, PDF, image,
               AI and student tools in one place.
             </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              A product by{" "}
+              <a
+                href="https://grainzap.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-foreground hover:text-primary hover:underline"
+              >
+                GrainZap
+              </a>
+            </p>
           </div>
 
           {categories.map((cat) => (
@@ -47,7 +58,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Toolwise. All rights reserved.
+            © {new Date().getFullYear()} GrainZap. Toolwise is a GrainZap product. All rights reserved.
           </p>
           <nav className="flex flex-wrap gap-x-5 gap-y-2">
             {legalLinks.map((link) => (

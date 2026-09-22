@@ -55,9 +55,9 @@ export default function DisclaimerPage() {
         <section>
           <h2>No professional relationship</h2>
           <p>
-            Using Toolwise does not create any professional, advisory or fiduciary relationship between you and
-            Toolwise. For specific financial, legal, tax, academic or career decisions, consult a qualified
-            professional.
+            Toolwise is a product by GrainZap. Using Toolwise does not create any professional, advisory or
+            fiduciary relationship between you and GrainZap. For specific financial, legal, tax, academic or
+            career decisions, consult a qualified professional.
           </p>
         </section>
       </div>

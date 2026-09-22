@@ -18,8 +18,9 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2>1. What this policy covers</h2>
           <p>
-            This policy explains how Toolwise (&quot;we&quot;, &quot;us&quot;) handles information when you use
-            our tools and website. We designed Toolwise so that most tools need no personal information at all.
+            Toolwise is a product by GrainZap. This policy explains how GrainZap (&quot;we&quot;,
+            &quot;us&quot;) handles information when you use Toolwise&apos;s tools and website. We designed
+            Toolwise so that most tools need no personal information at all.
           </p>
         </section>
 
@@ -96,11 +97,15 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2>8. Contact</h2>
           <p>
-            Questions about this policy? Reach us via our{" "}
+            Questions about this policy? Reach GrainZap via our{" "}
             <Link href="/contact" className="text-primary hover:underline">
               Contact page
             </Link>
-            .
+            , by email at{" "}
+            <a href="mailto:info@grainzap.com" className="text-primary hover:underline">
+              info@grainzap.com
+            </a>
+            , or by post at 20, Narayan Vihar Rd, Narayan Vihar, Jaipur, Rajasthan 302020, India.
           </p>
         </section>
       </div>

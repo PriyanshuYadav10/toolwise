@@ -6,7 +6,7 @@ import { categories } from "@/lib/data/categories";
 export const metadata: Metadata = {
   title: "About Toolwise",
   description:
-    "Toolwise is a free, all-in-one platform of calculators, developer tools, PDF, image, AI and student tools — built for speed, privacy and everyday usefulness.",
+    "Toolwise is a free, all-in-one platform of calculators, developer tools, PDF, image, AI and student tools — built for speed, privacy and everyday usefulness. A product by GrainZap.",
   alternates: { canonical: "/about" },
 };
 
@@ -43,6 +43,22 @@ export default function AboutPage() {
             Privacy Policy
           </Link>{" "}
           for details on data handling and advertising.
+        </p>
+        <h2 className="text-xl font-semibold text-foreground">Built by GrainZap</h2>
+        <p>
+          Toolwise is a product by{" "}
+          <a
+            href="https://grainzap.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            GrainZap
+          </a>
+          , a digital agency offering design, development, marketing, AI &amp; automation, SEO and
+          consultation services. GrainZap&apos;s mission is to empower brands with smart, creative and
+          performance-driven digital strategies that deliver real growth — Toolwise is one way we put that
+          into practice, building a genuinely useful, no-nonsense product in the open.
         </p>
         <h2 className="text-xl font-semibold text-foreground">Questions or feedback?</h2>
         <p>

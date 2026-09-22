@@ -14,7 +14,7 @@ export function ContactForm() {
     e.preventDefault();
     const subject = encodeURIComponent(`Toolwise contact form — ${name || "Anonymous"}`);
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`);
-    window.location.href = `mailto:hello@toolwise.app?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@grainzap.com?subject=${subject}&body=${body}`;
   }
 
   return (

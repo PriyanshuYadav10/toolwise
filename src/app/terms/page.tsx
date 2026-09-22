@@ -17,8 +17,8 @@ export default function TermsPage() {
         <section>
           <h2>1. Acceptance of terms</h2>
           <p>
-            By using Toolwise, you agree to these Terms of Service. If you don&apos;t agree, please don&apos;t
-            use the site.
+            Toolwise is a product by GrainZap. By using Toolwise, you agree to these Terms of Service with
+            GrainZap. If you don&apos;t agree, please don&apos;t use the site.
           </p>
         </section>
 
@@ -54,8 +54,8 @@ export default function TermsPage() {
         <section>
           <h2>5. Intellectual property</h2>
           <p>
-            The Toolwise name, branding and site design are owned by us. Content you generate using a Toolwise
-            tool (a formatted file, a calculation result, AI-drafted text) belongs to you.
+            The Toolwise name, branding and site design are owned by GrainZap. Content you generate using a
+            Toolwise tool (a formatted file, a calculation result, AI-drafted text) belongs to you.
           </p>
         </section>
 
@@ -88,10 +88,14 @@ export default function TermsPage() {
         <section>
           <h2>9. Contact</h2>
           <p>
-            Questions about these terms? Reach us via our{" "}
+            Questions about these terms? Reach GrainZap via our{" "}
             <Link href="/contact" className="text-primary hover:underline">
               Contact page
-            </Link>
+            </Link>{" "}
+            or at{" "}
+            <a href="mailto:info@grainzap.com" className="text-primary hover:underline">
+              info@grainzap.com
+            </a>
             .
           </p>
         </section>

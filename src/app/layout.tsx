@@ -24,18 +24,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolwise.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Toolwise – Simple, Fast & Free Online Tools",
+    default: "Toolwise – Simple, Fast & Free Online Tools by GrainZap",
     template: "%s | Toolwise",
   },
   description:
-    "Free calculators, developer utilities, PDF tools, image tools, AI tools and student tools — fast, private and easy to use. No sign-up required.",
-  keywords: ["online tools", "free calculators", "developer tools", "pdf tools", "image tools"],
+    "Free calculators, developer utilities, PDF tools, image tools, AI tools and student tools — fast, private and easy to use. No sign-up required. Toolwise is a product by GrainZap.",
+  keywords: ["online tools", "free calculators", "developer tools", "pdf tools", "image tools", "GrainZap"],
   openGraph: {
     type: "website",
     siteName: "Toolwise",
-    title: "Toolwise – Simple, Fast & Free Online Tools",
+    title: "Toolwise – Simple, Fast & Free Online Tools by GrainZap",
     description:
-      "Free calculators, developer utilities, PDF tools, image tools, AI tools and student tools — all in one place.",
+      "Free calculators, developer utilities, PDF tools, image tools, AI tools and student tools — all in one place. A product by GrainZap.",
     url: siteUrl,
   },
   twitter: {
@@ -61,6 +61,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     "@type": "WebSite",
     name: "Toolwise",
     url: siteUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "GrainZap",
+      url: "https://grainzap.com",
+    },
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteUrl}/?q={search_term_string}`,
