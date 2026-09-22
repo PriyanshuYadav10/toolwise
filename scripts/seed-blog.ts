@@ -1,27 +1,15 @@
-export interface BlogBlock {
-  type: "p" | "h2" | "ul";
-  text?: string;
-  items?: string[];
-}
+import { db } from "../src/lib/db/client";
+import { blogPosts, type NewBlogPostRow } from "../src/lib/db/schema";
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  publishedAt: string;
-  readingTime: string;
-  relatedTool: { name: string; href: string; cta: string };
-  content: BlogBlock[];
-}
-
-export const blogPosts: BlogPost[] = [
+const seedPosts: NewBlogPostRow[] = [
   {
     slug: "how-to-calculate-emi",
     title: "How to Calculate EMI (With Formula and Examples)",
     excerpt:
       "A plain-English walkthrough of how loan EMIs are actually calculated, what drives your interest cost, and how tenure changes the total you repay.",
-    publishedAt: "2026-08-12",
+    publishedAt: new Date("2026-08-12"),
     readingTime: "5 min read",
+    status: "published",
     relatedTool: { name: "EMI Calculator", href: "/calculators/emi-calculator", cta: "Calculate Your EMI Free" },
     content: [
       {
@@ -69,8 +57,9 @@ export const blogPosts: BlogPost[] = [
     title: "How GST Is Calculated in India",
     excerpt:
       "Understand how India's Goods and Services Tax slabs work, the difference between CGST, SGST and IGST, and how to move between GST-inclusive and exclusive prices.",
-    publishedAt: "2026-07-28",
+    publishedAt: new Date("2026-07-28"),
     readingTime: "4 min read",
+    status: "published",
     relatedTool: { name: "GST Calculator", href: "/calculators/gst-calculator", cta: "Calculate GST Free" },
     content: [
       {
@@ -107,8 +96,9 @@ export const blogPosts: BlogPost[] = [
     title: "How to Reduce PDF File Size Without Losing Quality",
     excerpt:
       "Practical, realistic ways to shrink a PDF — what actually reduces size, what doesn't, and why image-heavy PDFs compress very differently from text documents.",
-    publishedAt: "2026-09-02",
+    publishedAt: new Date("2026-09-02"),
     readingTime: "4 min read",
+    status: "published",
     relatedTool: { name: "Compress PDF", href: "/pdf-tools/compress-pdf", cta: "Compress a PDF Free" },
     content: [
       {
@@ -146,8 +136,9 @@ export const blogPosts: BlogPost[] = [
     title: "How to Calculate Your CGPA (Formula Explained)",
     excerpt:
       "A step-by-step explanation of how CGPA is calculated from your subject grade points and credit hours, and how it differs from a simple average.",
-    publishedAt: "2026-08-20",
+    publishedAt: new Date("2026-08-20"),
     readingTime: "3 min read",
+    status: "published",
     relatedTool: { name: "CGPA Calculator", href: "/student-tools/cgpa-calculator", cta: "Calculate Your CGPA Free" },
     content: [
       {
@@ -182,6 +173,16 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+async function main() {
+  for (const post of seedPosts) {
+    await db.insert(blogPosts).values(post).onConflictDoNothing({ target: blogPosts.slug });
+  }
+  console.log(`Seeded ${seedPosts.length} posts.`);
 }
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

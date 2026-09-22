@@ -2,19 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Calendar } from "lucide-react";
-import { blogPosts, getBlogPost } from "@/lib/data/blog";
+import { getPublishedBlogPost } from "@/lib/db/blog-queries";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { buttonVariants } from "@/components/ui/button";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolwise.app";
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
-}
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getPublishedBlogPost(slug);
   if (!post) return {};
 
   return {
@@ -25,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
       title: post.title,
       description: post.excerpt,
       type: "article",
-      publishedTime: post.publishedAt,
+      publishedTime: post.publishedAt?.toISOString(),
       url: `/blog/${post.slug}`,
     },
   };
@@ -33,7 +31,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
 
 export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getPublishedBlogPost(slug);
   if (!post) notFound();
 
   const jsonLd = {
@@ -41,9 +39,9 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    datePublished: post.publishedAt,
+    datePublished: post.publishedAt?.toISOString(),
     url: `${siteUrl}/blog/${post.slug}`,
-    author: { "@type": "Organization", name: "Toolwise" },
+    author: { "@type": "Organization", name: "GrainZap" },
   };
 
   return (
@@ -57,8 +55,8 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
       <header className="mt-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Calendar className="size-3.5" />
-          <time dateTime={post.publishedAt}>
-            {new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+          <time dateTime={post.publishedAt?.toISOString()}>
+            {(post.publishedAt ?? post.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
           </time>
           <span>·</span>
           <span>{post.readingTime}</span>

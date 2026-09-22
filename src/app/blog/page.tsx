@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
-import { blogPosts } from "@/lib/data/blog";
+import { getPublishedBlogPosts } from "@/lib/db/blog-queries";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
+  const blogPosts = await getPublishedBlogPosts();
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <Breadcrumb items={[{ label: "Blog" }]} />
@@ -28,8 +30,8 @@ export default function BlogIndexPage() {
           >
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <Calendar className="size-3.5" />
-              <time dateTime={post.publishedAt}>
-                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              <time dateTime={post.publishedAt?.toISOString()}>
+                {(post.publishedAt ?? post.createdAt).toLocaleDateString("en-US", {
                   month: "long",
                   day: "numeric",
                   year: "numeric",
