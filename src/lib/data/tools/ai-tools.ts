@@ -37,10 +37,13 @@ export const aiTools: Tool[] = [
         "Turn a rough list of skills and experience into polished, professional wording.",
         "Get achievement-focused bullet points instead of generic duty descriptions.",
         "Regenerate any section until the wording feels right.",
+        "Break through blank-page paralysis — it's far easier to edit a draft than to start from nothing.",
       ],
       commonMistakes: [
         "Copying the AI output verbatim without checking accuracy — always verify facts, dates and numbers yourself.",
         "Giving too little detail, which produces a generic result. The more specific your input, the better the draft.",
+        "Using the same generated resume for every application instead of tailoring it to each job description.",
+        "Letting the AI invent metrics or achievements you can't back up in an interview — replace any number you didn't provide with a real one or remove it.",
       ],
       faq: [
         {
@@ -51,6 +54,21 @@ export const aiTools: Tool[] = [
         {
           question: "Is my information stored?",
           answer: AI_PRIVACY_NOTE,
+        },
+        {
+          question: "Will this resume pass an ATS (Applicant Tracking System)?",
+          answer:
+            "The output is plain text with standard section headings, which parses cleanly in most applicant tracking systems. But ATS ranking also depends on how well your content matches the specific job description, so add the relevant keywords and skills from the posting before you submit.",
+        },
+        {
+          question: "Can employers tell a resume was written with AI?",
+          answer:
+            "There's no reliable way to detect AI-assisted writing, and using a tool to draft your resume isn't dishonest. What matters is that every claim is accurate and that the final wording sounds like you — so always edit the draft rather than sending it as-is.",
+        },
+        {
+          question: "How should I tailor the draft for a specific job?",
+          answer:
+            "Read the job description and note the skills and responsibilities it emphasises. Then reorder your bullet points so the most relevant experience appears first, and make sure the terminology in your resume matches the terminology in the posting where it genuinely applies to you.",
         },
       ],
     },
@@ -76,7 +94,7 @@ export const aiTools: Tool[] = [
     relatedTools: ["ai-resume-builder", "paragraph-rewriter", "job-description-analyzer"],
     content: {
       intro:
-        "A generic cover letter rarely stands out. This tool drafts a cover letter tailored to the specific job title, company and your background, giving you a strong starting point to personalise further.",
+        "A generic cover letter rarely stands out. This tool drafts a cover letter tailored to the specific job title, company and your background, giving you a strong starting point to personalise further. A good cover letter adds the context a resume can't — why this role, why this company, and how your experience connects to what they're actually hiring for.",
       howToUse: [
         "Enter the job title and company you're applying to.",
         "Summarise your relevant experience and why you're interested.",
@@ -86,15 +104,33 @@ export const aiTools: Tool[] = [
       benefits: [
         "Save time writing a first draft for every application.",
         "Get a structure that highlights relevant experience for the specific role.",
+        "Start from a proper opening, middle and closing instead of staring at a blank page.",
+        "Adjust the tone and length quickly when you're applying to several roles in one sitting.",
       ],
       commonMistakes: [
         "Sending the AI draft without personalising it — always add specific details about why you want that particular role.",
+        "Simply restating your resume in paragraph form instead of adding context the resume can't convey.",
+        "Forgetting to update the company or role name when reusing a previous letter — hiring managers notice immediately.",
       ],
       faq: [
         {
           question: "Will this write a completely unique cover letter?",
           answer:
             "It generates a draft based on your specific inputs, but you should review, personalise and fact-check it before sending.",
+        },
+        {
+          question: "How long should a cover letter be?",
+          answer:
+            "Roughly 250-400 words, comfortably fitting on one page. Hiring managers usually skim, so three to four tight paragraphs beat a full page of dense text.",
+        },
+        {
+          question: "Do cover letters still matter if the application says they're optional?",
+          answer:
+            "Often yes. When a letter is optional, many candidates skip it, so a short, specific one is a low-cost way to explain a career change, a gap, or why you're genuinely interested in that company. If the application does not accept one at all, put that context into your resume summary instead.",
+        },
+        {
+          question: "Is my information stored?",
+          answer: AI_PRIVACY_NOTE,
         },
       ],
     },
@@ -119,7 +155,7 @@ export const aiTools: Tool[] = [
     relatedTools: ["grammar-checker", "text-summarizer", "cover-letter-generator"],
     content: {
       intro:
-        "Whether you need a paragraph to sound more formal, more concise, or simply clearer, this tool rewrites your text while preserving its original meaning.",
+        "Whether you need a paragraph to sound more formal, more concise, or simply clearer, this tool rewrites your text while preserving its original meaning. It's useful when you know what you want to say but the wording isn't landing — for work emails, application essays, product copy or anything where tone matters as much as content. You stay in control: the rewrite is a suggestion you can accept, edit or regenerate.",
       howToUse: [
         "Paste the paragraph you want to rewrite.",
         "Choose a tone: formal, casual, concise or simple.",
@@ -128,15 +164,33 @@ export const aiTools: Tool[] = [
       benefits: [
         "Quickly adjust tone for emails, reports or academic writing.",
         "Get multiple phrasing options by regenerating.",
+        "Tighten wordy drafts down to something a reader will actually finish.",
+        "See how the same idea reads in a different register, which is helpful if you're writing in a second language.",
       ],
       commonMistakes: [
         "Rewriting highly technical or legal text without double-checking that precise meaning is preserved.",
+        "Pasting in very long passages at once — rewriting a few paragraphs at a time gives tighter, more accurate results.",
+        "Accepting a rewrite that sounds polished but has quietly dropped a specific detail, number or caveat from the original.",
       ],
       faq: [
         {
           question: "Does this change the meaning of my text?",
           answer:
             "The tool aims to preserve meaning while adjusting tone and clarity, but always review the output for accuracy, especially for technical content.",
+        },
+        {
+          question: "Can I use this for academic work or assignments?",
+          answer:
+            "Use it to improve your own writing, not to disguise someone else's. Many institutions have specific policies on AI assistance, and some run similarity or AI-detection checks, so check your course rules before submitting rewritten text.",
+        },
+        {
+          question: "Will the rewritten text be free of plagiarism?",
+          answer:
+            "The rewrite is newly generated from your input rather than copied from a source, but rewording text you didn't write does not make it yours. If the original content came from somewhere else, you still need to cite it.",
+        },
+        {
+          question: "Is my text stored?",
+          answer: AI_PRIVACY_NOTE,
         },
       ],
     },

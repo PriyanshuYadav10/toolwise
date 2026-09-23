@@ -51,11 +51,14 @@ export const calculatorTools: Tool[] = [
         "Plan your monthly budget before committing to a loan.",
         "Compare EMIs across different tenures and interest rates in seconds.",
         "See how much of your repayment is interest versus principal.",
+        "Stress-test affordability by re-running the numbers at a higher rate before you sign.",
       ],
       commonMistakes: [
         "Comparing only the EMI amount without checking the total interest paid over the full tenure.",
         "Forgetting that a longer tenure lowers EMI but significantly increases total interest.",
         "Not accounting for processing fees or prepayment charges, which this calculator does not include.",
+        "Converting the annual rate to a monthly rate incorrectly — divide by 12 and by 100 exactly once each.",
+        "Assuming a floating rate will stay at today's level for the entire tenure when budgeting.",
       ],
       faq: [
         {
@@ -72,6 +75,16 @@ export const calculatorTools: Tool[] = [
           question: "Does this include processing fees or insurance?",
           answer:
             "No, this calculator only computes principal and interest. Add any fees your lender charges separately when budgeting.",
+        },
+        {
+          question: "Why is the interest portion of my early EMIs so high?",
+          answer:
+            "Interest each month is charged on the outstanding balance, which is largest at the start. As the balance falls, the interest share of each fixed EMI falls too and the principal share rises — which is why prepaying early saves far more interest than prepaying late.",
+        },
+        {
+          question: "How does a prepayment affect my EMI?",
+          answer:
+            "A lump-sum prepayment reduces the outstanding principal. Most lenders then let you choose between keeping the EMI the same and shortening the tenure, or keeping the tenure and lowering the EMI. Shortening the tenure saves more interest. Ask your lender which option they apply by default.",
         },
       ],
     },
@@ -126,11 +139,14 @@ export const calculatorTools: Tool[] = [
         "Visualise how compounding grows a monthly investment over the long term.",
         "Compare different monthly amounts or durations before you commit.",
         "Understand the split between your own contribution and market-driven gains.",
+        "Work backwards from a target corpus to the monthly amount you'd need to invest.",
       ],
       commonMistakes: [
         "Assuming the expected return rate is guaranteed — mutual fund returns fluctuate with the market.",
         "Ignoring the effect of fund expense ratios and exit loads on real returns.",
         "Stopping a SIP during a market dip, which works against long-term compounding.",
+        "Entering an unrealistically high expected return based on a fund's recent short-term performance.",
+        "Forgetting that capital gains tax applies on redemption, which this calculator does not compute.",
       ],
       faq: [
         {
@@ -142,6 +158,21 @@ export const calculatorTools: Tool[] = [
           question: "Does this account for inflation?",
           answer:
             "No, the maturity value shown is in nominal terms. Reduce your expected return by an assumed inflation rate to see an inflation-adjusted estimate.",
+        },
+        {
+          question: "What expected return rate should I enter?",
+          answer:
+            "There is no single correct figure, because returns depend on the fund category and market conditions. Many people model equity funds conservatively and debt funds lower still. Run the calculator at two or three different rates to see a range rather than a single number.",
+        },
+        {
+          question: "Is a SIP better than investing a lump sum?",
+          answer:
+            "Neither is universally better. A SIP spreads purchases across market levels, so you buy more units when prices are low, and it suits a regular income. A lump sum puts the full amount to work immediately, which helps if markets rise afterwards and hurts if they fall.",
+        },
+        {
+          question: "What is a step-up SIP?",
+          answer:
+            "A step-up (or top-up) SIP increases your monthly contribution by a set amount or percentage each year, usually in line with salary growth. It builds a noticeably larger corpus than a flat SIP over long periods. This calculator models a fixed monthly amount, so run it again with your higher future contribution to compare.",
         },
       ],
     },
@@ -195,11 +226,14 @@ export const calculatorTools: Tool[] = [
         "Quickly generate GST-inclusive prices for invoices and quotes.",
         "Reverse-calculate the base price from a GST-inclusive total.",
         "See the CGST/SGST split needed for intra-state billing.",
+        "Compare vendor quotes on a like-for-like basis by converting them all to the same tax basis.",
       ],
       commonMistakes: [
         "Applying GST twice by adding it to an amount that already includes GST.",
         "Using the wrong slab — always confirm the correct GST rate for your specific goods or service.",
         "Forgetting that inter-state supply uses IGST instead of a CGST/SGST split.",
+        "Removing GST by subtracting the rate from the inclusive total instead of dividing by (1 + rate/100).",
+        "Comparing an exclusive quote against an inclusive one without adding tax to the exclusive figure first.",
       ],
       faq: [
         {
@@ -210,6 +244,21 @@ export const calculatorTools: Tool[] = [
           question: "What's the difference between CGST, SGST and IGST?",
           answer:
             "For sales within the same state, GST is split equally between CGST (central) and SGST (state). For inter-state sales, IGST applies as a single combined tax instead.",
+        },
+        {
+          question: "How do I remove GST from a total that already includes it?",
+          answer:
+            "Divide the inclusive amount by (1 + rate/100). For ₹1,180 at 18%, that is 1,180 ÷ 1.18 = ₹1,000 base, with ₹180 as GST. Subtracting 18% of ₹1,180 gives the wrong answer, because the tax was originally calculated on the smaller base amount.",
+        },
+        {
+          question: "Does the buyer pay more under CGST/SGST than under IGST?",
+          answer:
+            "No. The total rate is the same either way. On an 18% intra-state supply the invoice shows 9% CGST plus 9% SGST; on an inter-state supply it shows a single 18% IGST line. Only the labelling and the distribution between governments differ.",
+        },
+        {
+          question: "Which GST rate applies to my product or service?",
+          answer:
+            "The applicable slab is determined by the HSN code for goods or the SAC code for services, and it is set nationally rather than varying by state. Confirm the correct code with your accountant or from a supplier invoice before billing.",
         },
       ],
     },
@@ -235,7 +284,7 @@ export const calculatorTools: Tool[] = [
     relatedTools: ["hra-calculator", "gst-calculator", "pf-calculator", "gratuity-calculator"],
     content: {
       intro:
-        "Your CTC (Cost to Company) is rarely the amount that lands in your bank account. This calculator breaks your annual CTC down into basic pay, HRA, employer PF contribution and standard deductions, to estimate your monthly in-hand salary.",
+        "Your CTC (Cost to Company) is rarely the amount that lands in your bank account. This calculator breaks your annual CTC down into basic pay, HRA, employer PF contribution and standard deductions, to estimate your monthly in-hand salary. CTC is the employer's total spend on you, so it includes contributions and provisions that are never paid out as monthly cash — which is why in-hand pay is always lower than CTC divided by twelve. Seeing the breakdown makes it far easier to compare two offers with very different salary structures.",
       howToUse: [
         "Enter your annual CTC.",
         "Adjust the basic pay percentage if you know your employer's structure (defaults to 50% of CTC).",
@@ -246,11 +295,14 @@ export const calculatorTools: Tool[] = [
         "Get a realistic take-home estimate before accepting a job offer.",
         "Understand how much of your CTC is deducted toward PF and other components.",
         "Compare offers with different CTC structures on a like-for-like in-hand basis.",
+        "See how the basic-pay percentage in your offer letter changes PF, HRA and take-home pay.",
       ],
       commonMistakes: [
         "Treating CTC as the amount you'll receive monthly — it includes employer contributions you never see in cash.",
         "Ignoring variable pay or bonuses that may be included in CTC but paid only annually or conditionally.",
         "Not accounting for income tax, which this calculator does not compute.",
+        "Comparing two offers on CTC alone when their basic-pay percentages and variable components differ.",
+        "Overlooking professional tax, which varies by state and is not levied at all in some states.",
       ],
       faq: [
         {
@@ -262,6 +314,21 @@ export const calculatorTools: Tool[] = [
           question: "Why is my in-hand salary lower than CTC divided by 12?",
           answer:
             "CTC includes employer PF contribution, gratuity provision and other benefits that aren't paid out as monthly cash salary.",
+        },
+        {
+          question: "How much PF is deducted from my salary?",
+          answer:
+            "Under EPF rules, the employee contributes 12% of basic salary plus dearness allowance, and the employer contributes a matching 12% (part of which goes to the pension scheme, EPS). Only the employee's 12% is deducted from your salary; the employer's share sits inside your CTC rather than your monthly cash pay.",
+        },
+        {
+          question: "Does a higher basic pay percentage mean less take-home pay?",
+          answer:
+            "Usually yes in the short term, because PF and gratuity are both calculated on basic pay, so a higher basic raises those deductions and provisions. The trade-off is a larger retirement corpus and a bigger gratuity payout, plus a higher ceiling for HRA exemption if you claim it.",
+        },
+        {
+          question: "What is professional tax and why is it deducted?",
+          answer:
+            "Professional tax is a state-level tax on salaried income. Rates and slabs are set by each state and some states do not levy it at all, so enter the monthly amount shown on your own payslip rather than assuming a standard figure.",
         },
       ],
     },
@@ -286,7 +353,7 @@ export const calculatorTools: Tool[] = [
     relatedTools: ["gst-calculator", "marks-percentage-calculator", "salary-calculator"],
     content: {
       intro:
-        "This tool covers the three most common percentage problems: finding a percentage of a number, finding what percentage one number is of another, and finding the percentage increase or decrease between two values.",
+        "This tool covers the three most common percentage problems: finding a percentage of a number, finding what percentage one number is of another, and finding the percentage increase or decrease between two values. Those three cover almost every everyday case — discounts, markups, tips, test scores, tax and growth rates. The mistakes people make are rarely in the arithmetic itself; they come from using the wrong base value, or from confusing a relative percentage change with a change measured in percentage points.",
       howToUse: [
         "Choose the type of percentage calculation you need.",
         "Enter the required values into the input fields.",
@@ -302,16 +369,39 @@ export const calculatorTools: Tool[] = [
         "Avoid manual calculation errors for everyday percentage problems.",
         "Quickly check discounts, markups, and grade or score percentages.",
         "See percentage increase or decrease with correct sign (positive for increase, negative for decrease).",
+        "Switch between the three calculation types without having to remember which formula to use.",
       ],
       commonMistakes: [
         "Confusing percentage change with percentage points, which are not the same thing.",
         "Using the new value instead of the old value as the base when calculating percentage change.",
+        "Assuming an increase and a decrease of the same percentage cancel out — a 20% rise followed by a 20% fall does not return you to the original value.",
+        "Adding percentages that were calculated on different base values, such as stacking two separate discounts as one combined figure.",
       ],
       faq: [
         {
           question: "How do I calculate a percentage increase?",
           answer:
             "Subtract the old value from the new value, divide by the old value, then multiply by 100. This calculator does that automatically for you.",
+        },
+        {
+          question: "What is the difference between a percentage and a percentage point?",
+          answer:
+            "If a rate moves from 10% to 15%, that is a 5 percentage point increase, but a 50% relative increase (5 ÷ 10 × 100). Percentage points describe the arithmetic gap between two percentages; percentage change describes the gap relative to the starting value.",
+        },
+        {
+          question: "How do I find the original price before a discount?",
+          answer:
+            "Divide the discounted price by (1 − discount/100). An item selling for ₹800 after a 20% discount had an original price of 800 ÷ 0.8 = ₹1,000. Adding 20% back to ₹800 gives ₹960, which is wrong, because the discount was calculated on the higher original price.",
+        },
+        {
+          question: "Why don't two successive discounts simply add up?",
+          answer:
+            "Each discount applies to whatever the price is at that moment. A 20% discount followed by a further 10% off leaves you paying 0.8 × 0.9 = 0.72 of the original, a 28% total discount rather than 30%, because the second cut is taken on the already-reduced price.",
+        },
+        {
+          question: "How do I convert a score into a percentage?",
+          answer:
+            "Divide the marks obtained by the total marks and multiply by 100. For 68 out of 80, that is (68 ÷ 80) × 100 = 85%. Use the \"what percentage is X of Y\" mode for this.",
         },
       ],
     },

@@ -25,7 +25,7 @@ export const pdfTools: Tool[] = [
     relatedTools: ["split-pdf", "compress-pdf", "jpg-to-pdf", "rotate-pdf"],
     content: {
       intro:
-        "Combine two or more PDF files into a single document. Drag to reorder files before merging — everything happens locally in your browser, so your documents are never uploaded to a server.",
+        "Combine two or more PDF files into a single document. Drag to reorder files before merging — everything happens locally in your browser, so your documents are never uploaded to a server. Each source file's pages are copied across in their existing order, one file after another, so the sequence you set on screen is exactly the sequence you get in the output. Pages are copied rather than re-encoded, so nothing is re-compressed and the visual quality of every page is preserved.",
       howToUse: [
         "Drag and drop or browse to select the PDF files you want to merge.",
         "Reorder them by dragging into the order you want in the final document.",
@@ -34,10 +34,14 @@ export const pdfTools: Tool[] = [
       benefits: [
         "Combine reports, invoices or scanned pages into one file without installing software.",
         "Files are processed locally, so nothing is uploaded to a server.",
+        "Pages are copied as-is rather than re-encoded, so text stays sharp and images keep their original quality.",
+        "Send one attachment instead of five, which is easier for recipients to open, print and file.",
       ],
       commonMistakes: [
         "Forgetting to reorder files before merging, resulting in pages in the wrong sequence.",
         "Merging password-protected PDFs, which this tool cannot open without the password.",
+        "Assuming merging will shrink the result — the combined file is roughly the sum of its parts, so compress it afterwards if you need it smaller.",
+        "Sharing the merged file without opening it first, and only later noticing a stray cover page or a document that was added twice.",
       ],
       faq: [
         {
@@ -48,6 +52,21 @@ export const pdfTools: Tool[] = [
         {
           question: "Are my files uploaded to a server?",
           answer: PDF_PRIVACY_NOTE,
+        },
+        {
+          question: "Does merging reduce the quality of my PDFs?",
+          answer:
+            "No. Pages are copied from each source document into the new file rather than being re-rendered or re-compressed, so text, vector graphics and embedded images come through exactly as they were.",
+        },
+        {
+          question: "How big will the merged file be?",
+          answer:
+            "Roughly the combined size of the originals. Merging is additive, not compressive, so if the result is too large to email, run it through a PDF compressor afterwards.",
+        },
+        {
+          question: "What happens to bookmarks, form fields and links?",
+          answer:
+            "Page content is always preserved, but document-level features like bookmarks (the table-of-contents outline), interactive form fields and some annotations may not carry over into the merged file. If those matter, check the output before sharing it.",
         },
       ],
     },
@@ -109,21 +128,48 @@ export const pdfTools: Tool[] = [
     relatedTools: ["merge-pdf", "split-pdf", "image-compressor"],
     content: {
       intro:
-        "This tool reduces PDF file size by re-encoding embedded images and removing redundant document data. Compression results vary — PDFs that are mostly text compress less than image-heavy scanned documents.",
+        "This tool reduces PDF file size by re-encoding embedded images and removing redundant document data. Compression results vary — PDFs that are mostly text compress less than image-heavy scanned documents. That's because text in a PDF is stored as vector outlines and font references, which are already extremely compact, while photos and scanned pages are raster data with real redundancy to squeeze out. If your file is large, embedded images are almost always the reason.",
       howToUse: [
         "Upload the PDF you want to compress.",
         "Choose a compression level.",
         "Download the compressed file and compare the size reduction.",
       ],
-      benefits: ["Make large PDFs easier to email or upload where size limits apply."],
+      benefits: [
+        "Make large PDFs easier to email or upload where size limits apply.",
+        "Cut scanned documents down dramatically, since scans are usually captured at far higher resolution than screen reading needs.",
+        "Compare the before and after sizes before you commit to the download.",
+        "Runs locally, so confidential contracts and statements never leave your device.",
+      ],
       commonMistakes: [
         "Expecting large size reductions on text-only PDFs, which are already fairly compact.",
+        "Jumping straight to the most aggressive setting when a moderate level would have met the size limit with no visible quality loss.",
+        "Overwriting the original file with the compressed copy — compression is one-directional, so the detail you discard cannot be restored.",
       ],
       faq: [
         {
           question: "Will compression reduce quality?",
           answer:
             "Higher compression levels reduce embedded image quality more aggressively. Text and vector content remain sharp regardless of the compression level.",
+        },
+        {
+          question: "Why did my PDF barely shrink?",
+          answer:
+            "Usually because there was little to remove. A text-only document is already near its practical minimum size, and images that were heavily compressed before being embedded can't be squeezed much further without a visible quality hit.",
+        },
+        {
+          question: "Which PDFs compress the most?",
+          answer:
+            "Scanned documents and photo-heavy files. A page scanned at 600 DPI holds around four times the pixel data of the same page at 300 DPI, with no difference you'd notice on screen — so there's a lot of headroom to reclaim.",
+        },
+        {
+          question: "Can I still search or select the text afterwards?",
+          answer:
+            "Yes. Compression re-encodes images and cleans up the document structure; it doesn't rasterise your pages. Text that was selectable before stays selectable and searchable. The exception is a scanned PDF, where the 'text' was only ever part of an image to begin with.",
+        },
+        {
+          question: "What file size should I aim for?",
+          answer:
+            "Most email providers cap attachments at around 25MB, but staying well under 10MB is a safer target for reliable delivery. Moderate compression is usually enough to get a typical scanned document comfortably below that.",
         },
       ],
     },
@@ -148,15 +194,45 @@ export const pdfTools: Tool[] = [
     relatedTools: ["jpg-to-pdf", "pdf-to-png", "image-compressor"],
     content: {
       intro:
-        "This tool renders each page of your PDF as a JPG image directly in your browser, so you can download individual pages or all of them at once.",
+        "This tool renders each page of your PDF as a JPG image directly in your browser, so you can download individual pages or all of them at once. Rasterising a page turns everything on it — text, tables, charts and photos — into a flat grid of pixels, which is exactly what you want when a page needs to behave like a picture rather than a document.",
       howToUse: [
         "Upload your PDF file.",
         "Preview the rendered pages.",
         "Download individual pages or all pages as JPG images.",
       ],
-      benefits: ["Extract pages as images for presentations, thumbnails or sharing."],
-      commonMistakes: ["Converting very large PDFs, which can be slow since rendering happens on your device."],
-      faq: [],
+      benefits: [
+        "Extract pages as images for presentations, thumbnails or sharing.",
+        "Drop a page straight into a slide, a document or a chat where PDFs aren't accepted.",
+        "Share a page as a flat image when you'd rather the text wasn't copyable or editable.",
+        "JPG's lossy compression keeps photo-like scanned pages small and quick to send.",
+      ],
+      commonMistakes: [
+        "Converting very large PDFs, which can be slow since rendering happens on your device.",
+        "Using JPG for pages that are mostly crisp text or line art — PNG output keeps those edges sharper.",
+        "Expecting the resulting image to still be searchable or selectable, when rasterising flattens text into pixels.",
+      ],
+      faq: [
+        {
+          question: "Will I still be able to search or copy the text?",
+          answer:
+            "No. Converting a page to JPG flattens it into pixels, so the text becomes part of the picture. Keep the original PDF if you need searchable text, and treat the images as a visual copy.",
+        },
+        {
+          question: "Should I choose JPG or PNG?",
+          answer:
+            "JPG suits photographic and scanned pages, where its lossy compression saves a lot of space with no obvious quality cost. PNG is lossless and better for pages with crisp text, logos, charts or line art, where JPG can leave fuzzy halos around sharp edges — at the cost of a larger file.",
+        },
+        {
+          question: "What resolution are the exported images?",
+          answer:
+            "Pages are rendered at a resolution suitable for on-screen use and sharing. As a rule of thumb, around 150 DPI is plenty for viewing on a screen, while roughly 300 DPI is the usual target if the image will be printed — higher settings produce sharper but considerably larger files.",
+        },
+        {
+          question: "Can I convert just one page instead of the whole document?",
+          answer:
+            "Yes. Every page is previewed after conversion, and you can download individual pages rather than the full set.",
+        },
+      ],
     },
   },
   {
@@ -179,15 +255,45 @@ export const pdfTools: Tool[] = [
     relatedTools: ["pdf-to-jpg", "merge-pdf", "image-compressor"],
     content: {
       intro:
-        "Combine one or more JPG or PNG images into a single PDF file. Reorder images before converting to control page order in the final document.",
+        "Combine one or more JPG or PNG images into a single PDF file. Reorder images before converting to control page order in the final document. Each image becomes one page, which makes this the quickest way to turn a stack of phone photos or scanner output into something you can email, print or file as a proper document.",
       howToUse: [
         "Upload one or more images.",
         "Reorder them into the order you want in the PDF.",
         "Click Convert to PDF and download the result.",
       ],
-      benefits: ["Turn scanned pages or photos into a single, shareable PDF document."],
-      commonMistakes: ["Uploading very high-resolution images, which increases the final PDF's file size."],
-      faq: [],
+      benefits: [
+        "Turn scanned pages or photos into a single, shareable PDF document.",
+        "One attachment instead of a dozen loose image files, in a fixed, predictable page order.",
+        "PDF opens the same way on every device, unlike image files that viewers may rotate or rescale.",
+        "Runs in your browser, so photos of IDs, receipts and documents never leave your device.",
+      ],
+      commonMistakes: [
+        "Uploading very high-resolution images, which increases the final PDF's file size.",
+        "Forgetting to rotate or crop photos first — the PDF preserves whatever orientation and framing the image already had.",
+        "Expecting the PDF to be searchable, when the pages are images and contain no real text layer.",
+      ],
+      faq: [
+        {
+          question: "Will the PDF's text be searchable?",
+          answer:
+            "No. Each page is a picture of your document, not a text layer, so nothing inside it can be searched or selected. Making a scan searchable requires OCR, which is a separate step.",
+        },
+        {
+          question: "Why is my PDF so large?",
+          answer:
+            "Because the images are. A modern phone photo can easily be several megabytes, and the PDF carries that data over. Resize or compress the images before converting, or compress the finished PDF, if size matters.",
+        },
+        {
+          question: "Can I mix JPG and PNG images in one PDF?",
+          answer:
+            "Yes. You can combine both formats in the same document — each image simply becomes its own page in the order you arrange them.",
+        },
+        {
+          question: "How is the page order decided?",
+          answer:
+            "By the order of the images on screen. Drag them into position before converting, and check the first and last pages of the result before sending it on.",
+        },
+      ],
     },
   },
   {
