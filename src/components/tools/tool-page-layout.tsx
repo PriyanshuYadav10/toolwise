@@ -5,7 +5,7 @@ import { getRelatedTools, toolHref } from "@/lib/data/tools";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Accordion } from "@/components/ui/accordion";
 import { ToolCard } from "@/components/tools/tool-card";
-import { AdBanner, AdInArticle, AdSidebar } from "@/components/ads";
+import { AdBannerResponsive, AdInArticle, AdSidebar } from "@/components/ads";
 import { ShieldCheck, ListChecks, Sigma, Lightbulb, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 
@@ -41,7 +41,7 @@ export function ToolPageLayout({ tool, children }: { tool: Tool; children: React
           <section aria-label={`${tool.name} tool`}>{children}</section>
 
           <div className="my-8 flex justify-center">
-            <AdBanner />
+            <AdBannerResponsive />
           </div>
 
           {content && (

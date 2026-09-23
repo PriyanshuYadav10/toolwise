@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdBannerResponsive } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -99,6 +100,9 @@ export default function TermsPage() {
             .
           </p>
         </section>
+      </div>
+      <div className="mt-10 flex justify-center">
+        <AdBannerResponsive />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { liveTools } from "@/lib/data/tools";
 import { categories } from "@/lib/data/categories";
+import { AdBannerResponsive } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "About Toolwise",
@@ -68,6 +69,9 @@ export default function AboutPage() {
           </Link>{" "}
           to get in touch.
         </p>
+      </div>
+      <div className="mt-10 flex justify-center">
+        <AdBannerResponsive />
       </div>
     </div>
   );

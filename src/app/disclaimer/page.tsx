@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdBannerResponsive } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
@@ -60,6 +61,9 @@ export default function DisclaimerPage() {
             career decisions, consult a qualified professional.
           </p>
         </section>
+      </div>
+      <div className="mt-10 flex justify-center">
+        <AdBannerResponsive />
       </div>
     </div>
   );

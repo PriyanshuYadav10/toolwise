@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { categories, getCategory } from "@/lib/data/categories";
 import { getToolsByCategory } from "@/lib/data/tools";
 import { ToolCard } from "@/components/tools/tool-card";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Icon } from "@/components/icon";
-import { AdBanner } from "@/components/ads";
+import { AdBannerResponsive, AdRectangle } from "@/components/ads";
 import { JsonLd } from "@/components/seo/json-ld";
+
+const IN_FEED_AD_INTERVAL = 8;
 
 export function generateStaticParams() {
   return categories.map((c) => ({ category: c.slug }));
@@ -65,8 +68,15 @@ export default async function CategoryPage({ params }: PageProps<"/[category]">)
 
       <section className="mt-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {live.map((tool) => (
-            <ToolCard key={tool.id} tool={tool} />
+          {live.map((tool, i) => (
+            <Fragment key={tool.id}>
+              <ToolCard tool={tool} />
+              {(i + 1) % IN_FEED_AD_INTERVAL === 0 && i !== live.length - 1 && (
+                <div className="flex items-center justify-center">
+                  <AdRectangle />
+                </div>
+              )}
+            </Fragment>
           ))}
         </div>
       </section>
@@ -83,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps<"/[category]">)
       )}
 
       <div className="mt-10 flex justify-center">
-        <AdBanner />
+        <AdBannerResponsive />
       </div>
     </div>
   );

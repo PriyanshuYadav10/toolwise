@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { ContactForm } from "./contact-form";
+import { AdBannerResponsive } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -42,6 +43,10 @@ export default function ContactPage() {
 
       <div className="mt-8">
         <ContactForm />
+      </div>
+
+      <div className="mt-12 flex justify-center border-t border-border pt-8">
+        <AdBannerResponsive />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdBannerResponsive } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -108,6 +109,9 @@ export default function PrivacyPolicyPage() {
             , or by post at 20, Narayan Vihar Rd, Narayan Vihar, Jaipur, Rajasthan 302020, India.
           </p>
         </section>
+      </div>
+      <div className="mt-10 flex justify-center">
+        <AdBannerResponsive />
       </div>
     </div>
   );

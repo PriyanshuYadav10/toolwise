@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import { getPublishedBlogPosts } from "@/lib/db/blog-queries";
 import { getCategory } from "@/lib/data/categories";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AdBanner } from "@/components/ads";
+import { AdBannerResponsive, AdRectangle } from "@/components/ads";
+
+const IN_FEED_AD_INTERVAL = 6;
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -35,14 +38,15 @@ export default async function BlogIndexPage() {
       </p>
 
       <div className="mt-6 flex justify-center">
-        <AdBanner />
+        <AdBannerResponsive />
       </div>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => {
+        {posts.map((post, i) => {
           const cat = post.category ? getCategory(post.category) : undefined;
           return (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+            <Fragment key={post.slug}>
+            <Link href={`/blog/${post.slug}`} className="group">
               <Card className="flex h-full flex-col p-6 transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-md">
                 {cat && (
                   <Badge variant={BADGE_VARIANTS[cat.accent]} className="w-fit">
@@ -80,6 +84,12 @@ export default async function BlogIndexPage() {
                 </span>
               </Card>
             </Link>
+            {(i + 1) % IN_FEED_AD_INTERVAL === 0 && i !== posts.length - 1 && (
+              <div className="flex items-center justify-center">
+                <AdRectangle />
+              </div>
+            )}
+            </Fragment>
           );
         })}
       </div>

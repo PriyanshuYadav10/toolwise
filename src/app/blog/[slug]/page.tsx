@@ -7,7 +7,7 @@ import { extractHeadings, getHeadingId } from "@/lib/blog-content";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { AdInArticle, AdSidebar } from "@/components/ads";
+import { AdBannerResponsive, AdInArticle, AdSidebar } from "@/components/ads";
 import { JsonLd } from "@/components/seo/json-ld";
 import { BlogPostHeader } from "@/components/blog/blog-post-header";
 import { TableOfContents } from "@/components/blog/table-of-contents";
@@ -93,6 +93,10 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
           publishedAt={post.publishedAt}
           readingTime={post.readingTime}
         />
+      </div>
+
+      <div className="mt-6 flex justify-center">
+        <AdBannerResponsive />
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_280px]">

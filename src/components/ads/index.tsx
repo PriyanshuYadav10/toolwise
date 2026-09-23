@@ -7,6 +7,20 @@ export function AdBanner({ className }: { className?: string }) {
   return <AdSlot type="leaderboard" className={className} />;
 }
 
+/**
+ * Pairs the desktop leaderboard with the mobile-banner slot so every
+ * "top banner" placement is visible regardless of viewport — `AdBanner`
+ * alone is `hidden` below the `md` breakpoint and shows nothing on phones.
+ */
+export function AdBannerResponsive({ className }: { className?: string }) {
+  return (
+    <>
+      <AdSlot type="leaderboard" className={className} />
+      <AdSlot type="mobile-banner" className={className} />
+    </>
+  );
+}
+
 export function AdRectangle({ className }: { className?: string }) {
   return <AdSlot type="rectangle" className={className} />;
 }

@@ -7,7 +7,7 @@ import { CategoryCard } from "@/components/tools/category-card";
 import { ToolCard } from "@/components/tools/tool-card";
 import { getFeaturedTools, getPopularTools, liveTools } from "@/lib/data/tools";
 import { Accordion } from "@/components/ui/accordion";
-import { AdBanner } from "@/components/ads";
+import { AdBannerResponsive, AdRectangle } from "@/components/ads";
 import { RecentlyUsedSection } from "@/components/tools/recently-used-section";
 
 export const metadata: Metadata = {
@@ -148,7 +148,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
-          <AdBanner />
+          <AdBannerResponsive />
         </div>
       </section>
 
@@ -177,6 +177,12 @@ export default function HomePage() {
               <ToolCard key={tool.id} tool={tool} className="min-w-64 sm:min-w-0" />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center">
+          <AdRectangle />
         </div>
       </section>
 
