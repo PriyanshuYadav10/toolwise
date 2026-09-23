@@ -5,6 +5,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { getPublishedBlogPost } from "@/lib/db/blog-queries";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { buttonVariants } from "@/components/ui/button";
+import { AdInArticle } from "@/components/ads";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolwise.app";
 
@@ -88,6 +89,10 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             </p>
           );
         })}
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <AdInArticle />
       </div>
 
       <div className="mt-10 flex flex-col items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:flex-row sm:items-center sm:justify-between">

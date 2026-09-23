@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
 import { getPublishedBlogPosts } from "@/lib/db/blog-queries";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { AdBanner } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -22,6 +23,10 @@ export default async function BlogIndexPage() {
       <p className="mt-2 text-muted-foreground">
         Practical guides behind the tools — how calculations actually work, and how to get the most out of them.
       </p>
+
+      <div className="mt-6 flex justify-center">
+        <AdBanner />
+      </div>
 
       <div className="mt-8 space-y-5">
         {blogPosts.map((post) => (
