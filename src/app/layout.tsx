@@ -6,6 +6,7 @@ import { ToastProvider } from "@/components/ui/toast";
 import { AdProvider } from "@/components/ads";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </ToastProvider>
           </AdProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
