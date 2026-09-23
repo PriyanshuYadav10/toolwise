@@ -7,6 +7,7 @@ import { ToastProvider } from "@/components/ui/toast";
 import { AdProvider } from "@/components/ads";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd } from "@/components/seo/json-ld";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,6 +48,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 export const viewport: Viewport = {
@@ -57,7 +63,7 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const jsonLd = {
+  const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Toolwise",
@@ -74,13 +80,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     },
   };
 
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "GrainZap",
+    url: "https://grainzap.com",
+    logo: `${siteUrl}/icon.png`,
+  };
+
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={websiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
         <ThemeProvider>
           <AdProvider>
             <ToastProvider>

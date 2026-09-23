@@ -4,17 +4,12 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 import type { BlogBlock, BlogPostRow } from "@/lib/db/schema";
+import { categories } from "@/lib/data/categories";
+import { slugify } from "@/lib/utils";
 import { Input, Textarea, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
-function slugify(title: string) {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
+import { Select } from "@/components/ui/select";
 
 interface PostEditorProps {
   mode: "create" | "edit";
@@ -32,6 +27,8 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
   const [relatedToolName, setRelatedToolName] = React.useState(initialPost?.relatedTool?.name ?? "");
   const [relatedToolHref, setRelatedToolHref] = React.useState(initialPost?.relatedTool?.href ?? "");
   const [relatedToolCta, setRelatedToolCta] = React.useState(initialPost?.relatedTool?.cta ?? "");
+  const [category, setCategory] = React.useState(initialPost?.category ?? "");
+  const [tagsInput, setTagsInput] = React.useState((initialPost?.tags ?? []).join(", "));
   const [content, setContent] = React.useState<BlogBlock[]>(initialPost?.content ?? []);
   const [error, setError] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
@@ -43,7 +40,11 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
   function addBlock(type: BlogBlock["type"]) {
     setContent((blocks) => [
       ...blocks,
-      type === "ul" ? { type, items: [""] } : { type, text: "" },
+      type === "ul"
+        ? { type, items: [""] }
+        : type === "callout"
+          ? { type, text: "", variant: "tip" }
+          : { type, text: "" },
     ]);
   }
 
@@ -77,6 +78,11 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
       readingTime,
       status,
       relatedTool: { name: relatedToolName, href: relatedToolHref, cta: relatedToolCta },
+      category: category || undefined,
+      tags: tagsInput
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean),
       content,
     };
 
@@ -153,6 +159,29 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
               </select>
             </div>
           </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label htmlFor="category">Category</Label>
+              <Select
+                id="category"
+                value={category}
+                onChange={setCategory}
+                options={[
+                  { value: "", label: "None" },
+                  ...categories.map((c) => ({ value: c.slug, label: c.name })),
+                ]}
+              />
+            </div>
+            <div>
+              <Label htmlFor="tags">Tags (comma-separated)</Label>
+              <Input
+                id="tags"
+                value={tagsInput}
+                onChange={(e) => setTagsInput(e.target.value)}
+                placeholder="emi, loans, finance"
+              />
+            </div>
+          </div>
         </CardContent>
       </Card>
 
@@ -203,14 +232,20 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
               <Button type="button" variant="outline" size="sm" onClick={() => addBlock("h2")}>
                 <Plus /> Heading
               </Button>
+              <Button type="button" variant="outline" size="sm" onClick={() => addBlock("h3")}>
+                <Plus /> Subheading
+              </Button>
               <Button type="button" variant="outline" size="sm" onClick={() => addBlock("ul")}>
                 <Plus /> Bullet list
+              </Button>
+              <Button type="button" variant="outline" size="sm" onClick={() => addBlock("callout")}>
+                <Plus /> Callout
               </Button>
             </div>
           </div>
 
           {content.length === 0 && (
-            <p className="text-sm text-muted-foreground">Add a paragraph, heading or bullet list block above.</p>
+            <p className="text-sm text-muted-foreground">Add a paragraph, heading, list or callout block above.</p>
           )}
 
           <div className="space-y-3">
@@ -277,11 +312,28 @@ export function PostEditor({ mode, initialPost }: PostEditorProps) {
                       <Plus /> Item
                     </Button>
                   </div>
-                ) : block.type === "h2" ? (
+                ) : block.type === "h2" || block.type === "h3" ? (
                   <Input
                     value={block.text ?? ""}
                     onChange={(e) => updateBlock(index, { ...block, text: e.target.value })}
                   />
+                ) : block.type === "callout" ? (
+                  <div className="space-y-2">
+                    <Select
+                      value={block.variant ?? "tip"}
+                      onChange={(v) => updateBlock(index, { ...block, variant: v as BlogBlock["variant"] })}
+                      options={[
+                        { value: "tip", label: "Tip" },
+                        { value: "warning", label: "Warning" },
+                        { value: "note", label: "Note" },
+                      ]}
+                    />
+                    <Textarea
+                      value={block.text ?? ""}
+                      onChange={(e) => updateBlock(index, { ...block, text: e.target.value })}
+                      className="min-h-20"
+                    />
+                  </div>
                 ) : (
                   <Textarea
                     value={block.text ?? ""}

@@ -6,6 +6,7 @@ import { ToolCard } from "@/components/tools/tool-card";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Icon } from "@/components/icon";
 import { AdBanner } from "@/components/ads";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ category: c.slug }));
@@ -48,10 +49,7 @@ export default async function CategoryPage({ params }: PageProps<"/[category]">)
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <Breadcrumb items={[{ label: category.name }]} />
 
       <header className="mt-4 flex items-start gap-4">

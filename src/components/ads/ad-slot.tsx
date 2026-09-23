@@ -70,7 +70,7 @@ export function AdSlot({ type, className }: AdSlotProps) {
         <ins
           ref={ref}
           className="adsbygoogle"
-          style={isAutorelaxed ? { display: "block" } : { display: "block", width: dims.width, height: dims.height }}
+          style={isAutorelaxed ? { display: "block", width: "100%" } : { display: "block", width: dims.width, height: dims.height }}
           data-ad-client={clientId}
           data-ad-slot={slot.slotId}
           data-ad-format={slot.format}

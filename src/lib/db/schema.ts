@@ -1,9 +1,10 @@
 import { pgTable, serial, text, jsonb, timestamp, pgEnum, varchar } from "drizzle-orm/pg-core";
 
 export interface BlogBlock {
-  type: "p" | "h2" | "ul";
+  type: "p" | "h2" | "h3" | "ul" | "callout";
   text?: string;
   items?: string[];
+  variant?: "tip" | "warning" | "note";
 }
 
 export interface RelatedTool {
@@ -21,6 +22,8 @@ export const blogPosts = pgTable("blog_posts", {
   excerpt: text("excerpt").notNull(),
   content: jsonb("content").$type<BlogBlock[]>().notNull(),
   relatedTool: jsonb("related_tool").$type<RelatedTool>().notNull(),
+  category: varchar("category", { length: 64 }),
+  tags: jsonb("tags").$type<string[]>().notNull().default([]),
   status: postStatusEnum("status").notNull().default("draft"),
   publishedAt: timestamp("published_at", { withTimezone: true }),
   readingTime: varchar("reading_time", { length: 32 }).notNull().default("3 min read"),

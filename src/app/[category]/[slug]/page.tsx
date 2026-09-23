@@ -4,6 +4,7 @@ import { allTools, getTool, toolHref } from "@/lib/data/tools";
 import { ToolPageLayout } from "@/components/tools/tool-page-layout";
 import { ToolWidget } from "@/components/tools/tool-widget";
 import { ToolAnalyticsBeacon } from "@/components/tools/tool-analytics-beacon";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export function generateStaticParams() {
   return allTools.map((tool) => ({ category: tool.category, slug: tool.slug }));
@@ -76,16 +77,25 @@ export default async function ToolPage({ params }: PageProps<"/[category]/[slug]
         })),
       });
     }
+
+    if (tool.content?.howToUse.length) {
+      jsonLdBlocks.push({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `How to use ${tool.name}`,
+        step: tool.content.howToUse.map((step, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          text: step,
+        })),
+      });
+    }
   }
 
   return (
     <>
       {jsonLdBlocks.map((block, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
-        />
+        <JsonLd key={i} data={block} />
       ))}
       <ToolAnalyticsBeacon toolSlug={tool.slug} category={tool.category} />
       <ToolPageLayout tool={tool}>

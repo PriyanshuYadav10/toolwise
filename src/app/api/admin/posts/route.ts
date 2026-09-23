@@ -7,9 +7,10 @@ import { blogPosts } from "@/lib/db/schema";
 import { requireAdminSession } from "@/lib/auth/require-session";
 
 const blockSchema = z.object({
-  type: z.enum(["p", "h2", "ul"]),
+  type: z.enum(["p", "h2", "h3", "ul", "callout"]),
   text: z.string().optional(),
   items: z.array(z.string()).optional(),
+  variant: z.enum(["tip", "warning", "note"]).optional(),
 });
 
 export const postSchema = z.object({
@@ -25,6 +26,8 @@ export const postSchema = z.object({
     href: z.string().min(1),
     cta: z.string().min(1),
   }),
+  category: z.string().optional(),
+  tags: z.array(z.string()).default([]),
   status: z.enum(["draft", "published"]),
   readingTime: z.string().min(1),
 });
