@@ -14,9 +14,21 @@ const DIMENSIONS: Record<AdSlotType, { width: number; height: number; className:
   "in-article": { width: 336, height: 280, className: "flex" },
 };
 
+/**
+ * Real AdSense ad units, created per format in the AdSense dashboard.
+ * "in-article" uses a matched-content (autorelaxed) unit, which sizes itself
+ * to its container rather than a fixed width/height.
+ */
+const SLOTS: Record<AdSlotType, { slotId: string; format: "auto" | "autorelaxed" }> = {
+  leaderboard: { slotId: "7159704593", format: "auto" },
+  rectangle: { slotId: "7159704593", format: "auto" },
+  sidebar: { slotId: "7159704593", format: "auto" },
+  "mobile-banner": { slotId: "7159704593", format: "auto" },
+  "in-article": { slotId: "4694246793", format: "autorelaxed" },
+};
+
 interface AdSlotProps {
   type: AdSlotType;
-  slotId?: string;
   className?: string;
 }
 
@@ -25,10 +37,12 @@ interface AdSlotProps {
  * With no ad network configured, renders a clearly-labelled placeholder so the
  * layout and UX can be reviewed before a real AdSense unit is wired in.
  */
-export function AdSlot({ type, slotId, className }: AdSlotProps) {
+export function AdSlot({ type, className }: AdSlotProps) {
   const { network, clientId } = useAdNetwork();
   const ref = React.useRef<HTMLModElement | null>(null);
   const dims = DIMENSIONS[type];
+  const slot = SLOTS[type];
+  const isAutorelaxed = slot.format === "autorelaxed";
 
   React.useEffect(() => {
     if (network !== "adsense") return;
@@ -56,11 +70,11 @@ export function AdSlot({ type, slotId, className }: AdSlotProps) {
         <ins
           ref={ref}
           className="adsbygoogle"
-          style={{ display: "block", width: dims.width, height: dims.height }}
+          style={isAutorelaxed ? { display: "block" } : { display: "block", width: dims.width, height: dims.height }}
           data-ad-client={clientId}
-          data-ad-slot={slotId}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
+          data-ad-slot={slot.slotId}
+          data-ad-format={slot.format}
+          {...(!isAutorelaxed && { "data-full-width-responsive": "true" })}
         />
       ) : (
         <div
