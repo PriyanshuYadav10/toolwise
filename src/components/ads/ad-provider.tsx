@@ -2,9 +2,12 @@
 
 import * as React from "react";
 import Script from "next/script";
+import { ADSTERRA_POPUNDER_SRC, ADSTERRA_SOCIAL_BAR_SRC } from "./adsterra-config";
+
+export type AdNetwork = "adsense" | "adsterra" | "none";
 
 interface AdContextValue {
-  network: "adsense" | "none";
+  network: AdNetwork;
   clientId?: string;
 }
 
@@ -14,14 +17,22 @@ export function useAdNetwork() {
   return React.useContext(AdContext);
 }
 
+function resolveNetwork(explicit: string | undefined, clientId: string | undefined): AdNetwork {
+  if (explicit === "adsterra") return "adsterra";
+  if (explicit === "adsense") return clientId ? "adsense" : "none";
+  // No explicit override: fall back to the previous behavior.
+  return clientId ? "adsense" : "none";
+}
+
 /**
- * Central ad network switch. Swapping providers (e.g. to an Ad Manager)
- * means changing this component only — AdSlot and its variants never
- * talk to a network directly.
+ * Central ad network switch. `NEXT_PUBLIC_AD_NETWORK` picks between
+ * "adsense" and "adsterra" — flip it (and redeploy) once AdSense approval
+ * comes through, no code change needed. AdSlot and its variants never talk
+ * to a network directly, only through `useAdNetwork()`.
  */
 export function AdProvider({ children }: { children: React.ReactNode }) {
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-  const network: AdContextValue["network"] = clientId ? "adsense" : "none";
+  const network = resolveNetwork(process.env.NEXT_PUBLIC_AD_NETWORK, clientId);
 
   return (
     <AdContext.Provider value={{ network, clientId }}>
@@ -32,6 +43,12 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />
+      )}
+      {network === "adsterra" && (
+        <>
+          <Script src={ADSTERRA_SOCIAL_BAR_SRC} strategy="lazyOnload" />
+          <Script src={ADSTERRA_POPUNDER_SRC} strategy="lazyOnload" />
+        </>
       )}
       {children}
     </AdContext.Provider>

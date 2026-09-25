@@ -3,6 +3,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useAdNetwork } from "./ad-provider";
+import { AdsterraBanner } from "./adsterra-banner";
+import { AdsterraNativeBanner } from "./adsterra-native-banner";
+import { ADSTERRA_BANNERS, type AdsterraBannerSize } from "./adsterra-config";
 
 export type AdSlotType = "leaderboard" | "rectangle" | "sidebar" | "mobile-banner" | "in-article";
 
@@ -27,6 +30,15 @@ const SLOTS: Record<AdSlotType, { slotId: string; format: "auto" | "autorelaxed"
   "in-article": { slotId: "4694246793", format: "autorelaxed" },
 };
 
+/** Nearest available Adsterra banner size per slot type. */
+const ADSTERRA_SIZE_FOR_SLOT: Record<AdSlotType, AdsterraBannerSize> = {
+  leaderboard: "728x90",
+  "mobile-banner": "320x50",
+  rectangle: "300x250",
+  sidebar: "160x600",
+  "in-article": "300x250", // unused — in-article renders the native banner instead
+};
+
 interface AdSlotProps {
   type: AdSlotType;
   className?: string;
@@ -35,7 +47,7 @@ interface AdSlotProps {
 /**
  * Reserves fixed dimensions for every placement (prevents CLS) and lazy-loads.
  * With no ad network configured, renders a clearly-labelled placeholder so the
- * layout and UX can be reviewed before a real AdSense unit is wired in.
+ * layout and UX can be reviewed before a real ad unit is wired in.
  */
 export function AdSlot({ type, className }: AdSlotProps) {
   const { network, clientId } = useAdNetwork();
@@ -76,6 +88,15 @@ export function AdSlot({ type, className }: AdSlotProps) {
           data-ad-format={slot.format}
           {...(!isAutorelaxed && { "data-full-width-responsive": "true" })}
         />
+      ) : network === "adsterra" ? (
+        type === "in-article" ? (
+          <AdsterraNativeBanner />
+        ) : (
+          (() => {
+            const banner = ADSTERRA_BANNERS[ADSTERRA_SIZE_FOR_SLOT[type]];
+            return <AdsterraBanner adKey={banner.key} width={banner.width} height={banner.height} />;
+          })()
+        )
       ) : (
         <div
           className="flex w-full items-center justify-center rounded-lg border border-dashed border-border bg-surface-sunken text-xs text-muted-foreground/60"
