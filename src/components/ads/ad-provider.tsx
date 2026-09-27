@@ -2,7 +2,12 @@
 
 import * as React from "react";
 import Script from "next/script";
-import { ADSTERRA_POPUNDER_SRC, ADSTERRA_SOCIAL_BAR_SRC } from "./adsterra-config";
+import {
+  ADSTERRA_INPAGE_PUSH_SRC,
+  ADSTERRA_INPAGE_PUSH_ZONE,
+  ADSTERRA_POPUNDER_SRC,
+  ADSTERRA_SOCIAL_BAR_SRC,
+} from "./adsterra-config";
 
 export type AdNetwork = "adsense" | "adsterra" | "none";
 
@@ -55,6 +60,12 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
         <>
           <Script src={ADSTERRA_SOCIAL_BAR_SRC} strategy="lazyOnload" />
           <Script src={ADSTERRA_POPUNDER_SRC} strategy="lazyOnload" />
+          <Script
+            src={ADSTERRA_INPAGE_PUSH_SRC}
+            data-zone={ADSTERRA_INPAGE_PUSH_ZONE}
+            data-cfasync="false"
+            strategy="lazyOnload"
+          />
         </>
       )}
       {children}

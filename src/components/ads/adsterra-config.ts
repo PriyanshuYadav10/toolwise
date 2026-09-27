@@ -28,6 +28,16 @@ export const ADSTERRA_SOCIAL_BAR_SRC =
 export const ADSTERRA_POPUNDER_SRC =
   "https://pl31509342.profitableratecpmnetwork.com/35/8d/d7/358dd78c8567d3c16f38fb343fae500d.js";
 
+export const ADSTERRA_INPAGE_PUSH_SRC = "https://quge5.com/88/tag.min.js";
+export const ADSTERRA_INPAGE_PUSH_ZONE = "287959";
+
 /** Not auto-placed anywhere yet — needs a specific link/button to attach to. */
 export const ADSTERRA_SMARTLINK_URL =
   "https://www.profitableratecpmnetwork.com/uj2tz5nnt?key=6ff6929edfb54be0b8c5d7d55d4d0e47";
+
+/** Also not auto-placed — same reasoning as the Smartlink above. */
+export const ADSTERRA_DIRECT_LINK_URLS = [
+  "https://omg10.com/4/11907481",
+  "https://omg10.com/4/11907482",
+  "https://omg10.com/4/11907485",
+];
