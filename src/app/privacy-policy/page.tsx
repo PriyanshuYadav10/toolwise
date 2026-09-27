@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdBannerResponsive } from "@/components/ads";
+import { SponsoredLink } from "@/components/ads/sponsored-link";
+import { ADSTERRA_DIRECT_LINK_URLS } from "@/components/ads/adsterra-config";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -112,6 +114,9 @@ export default function PrivacyPolicyPage() {
       </div>
       <div className="mt-10 flex justify-center">
         <AdBannerResponsive />
+      </div>
+      <div className="mt-4 flex justify-center">
+        <SponsoredLink href={ADSTERRA_DIRECT_LINK_URLS[2]} />
       </div>
     </div>
   );

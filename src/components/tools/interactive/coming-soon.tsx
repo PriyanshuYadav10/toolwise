@@ -1,5 +1,7 @@
 import { Clock } from "lucide-react";
 import type { Tool } from "@/lib/data/types";
+import { SponsoredLink } from "@/components/ads/sponsored-link";
+import { ADSTERRA_SMARTLINK_URL } from "@/components/ads/adsterra-config";
 
 export function ComingSoon({ tool }: { tool: Tool }) {
   return (
@@ -13,6 +15,7 @@ export function ComingSoon({ tool }: { tool: Tool }) {
           We&apos;re still building this one. Check out a related tool below in the meantime.
         </p>
       </div>
+      <SponsoredLink href={ADSTERRA_SMARTLINK_URL} />
     </div>
   );
 }

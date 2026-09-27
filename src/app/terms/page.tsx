@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AdBannerResponsive } from "@/components/ads";
+import { SponsoredLink } from "@/components/ads/sponsored-link";
+import { ADSTERRA_DIRECT_LINK_URLS } from "@/components/ads/adsterra-config";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -103,6 +105,9 @@ export default function TermsPage() {
       </div>
       <div className="mt-10 flex justify-center">
         <AdBannerResponsive />
+      </div>
+      <div className="mt-4 flex justify-center">
+        <SponsoredLink href={ADSTERRA_DIRECT_LINK_URLS[0]} />
       </div>
     </div>
   );

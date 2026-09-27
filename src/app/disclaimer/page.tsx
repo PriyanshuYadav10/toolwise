@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { AdBannerResponsive } from "@/components/ads";
+import { SponsoredLink } from "@/components/ads/sponsored-link";
+import { ADSTERRA_DIRECT_LINK_URLS } from "@/components/ads/adsterra-config";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
@@ -64,6 +66,9 @@ export default function DisclaimerPage() {
       </div>
       <div className="mt-10 flex justify-center">
         <AdBannerResponsive />
+      </div>
+      <div className="mt-4 flex justify-center">
+        <SponsoredLink href={ADSTERRA_DIRECT_LINK_URLS[1]} />
       </div>
     </div>
   );
