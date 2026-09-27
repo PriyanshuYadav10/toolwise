@@ -34,6 +34,13 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
   const network = resolveNetwork(process.env.NEXT_PUBLIC_AD_NETWORK, clientId);
 
+  React.useEffect(() => {
+    if (network !== "adsterra" || !("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      // registration can fail (unsupported browser, blocked, etc.) — safe to ignore
+    });
+  }, [network]);
+
   return (
     <AdContext.Provider value={{ network, clientId }}>
       {network === "adsense" && (
