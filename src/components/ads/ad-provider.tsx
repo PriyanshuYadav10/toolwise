@@ -9,7 +9,7 @@ import {
   ADSTERRA_SOCIAL_BAR_SRC,
 } from "./adsterra-config";
 
-export type AdNetwork = "adsense" | "adsterra" | "none";
+export type AdNetwork = "adsense" | "adsterra" | "monetag" | "none";
 
 interface AdContextValue {
   network: AdNetwork;
@@ -24,24 +24,32 @@ export function useAdNetwork() {
 
 function resolveNetwork(explicit: string | undefined, clientId: string | undefined): AdNetwork {
   if (explicit === "adsterra") return "adsterra";
+  if (explicit === "monetag") return "monetag";
   if (explicit === "adsense") return clientId ? "adsense" : "none";
   // No explicit override: fall back to the previous behavior.
   return clientId ? "adsense" : "none";
 }
 
+const SERVICE_WORKER_BY_NETWORK: Partial<Record<AdNetwork, string>> = {
+  adsterra: "/sw.js",
+  monetag: "/sw-monetag.js",
+};
+
 /**
  * Central ad network switch. `NEXT_PUBLIC_AD_NETWORK` picks between
- * "adsense" and "adsterra" — flip it (and redeploy) once AdSense approval
- * comes through, no code change needed. AdSlot and its variants never talk
- * to a network directly, only through `useAdNetwork()`.
+ * "adsense", "adsterra" and "monetag" — flip it (and redeploy) to compare
+ * networks or once AdSense approval comes through, no code change needed.
+ * AdSlot and its variants never talk to a network directly, only through
+ * `useAdNetwork()`.
  */
 export function AdProvider({ children }: { children: React.ReactNode }) {
   const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
   const network = resolveNetwork(process.env.NEXT_PUBLIC_AD_NETWORK, clientId);
 
   React.useEffect(() => {
-    if (network !== "adsterra" || !("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.register("/sw.js").catch(() => {
+    const swPath = SERVICE_WORKER_BY_NETWORK[network];
+    if (!swPath || !("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register(swPath).catch(() => {
       // registration can fail (unsupported browser, blocked, etc.) — safe to ignore
     });
   }, [network]);
