@@ -8,6 +8,7 @@ import {
   ADSTERRA_POPUNDER_SRC,
   ADSTERRA_SOCIAL_BAR_SRC,
 } from "./adsterra-config";
+import { MONETAG_INPAGE_PUSH_SRC, MONETAG_INPAGE_PUSH_ZONE } from "./monetag-config";
 
 export type AdNetwork = "adsense" | "adsterra" | "monetag" | "none";
 
@@ -75,6 +76,14 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
             strategy="lazyOnload"
           />
         </>
+      )}
+      {network === "monetag" && (
+        <Script
+          src={MONETAG_INPAGE_PUSH_SRC}
+          data-zone={MONETAG_INPAGE_PUSH_ZONE}
+          data-cfasync="false"
+          strategy="lazyOnload"
+        />
       )}
       {children}
     </AdContext.Provider>
