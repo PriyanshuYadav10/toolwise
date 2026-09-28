@@ -20,3 +20,34 @@ export function extractHeadings(content: BlogBlock[]): HeadingEntry[] {
       level: block.type === "h2" ? 2 : 3,
     }));
 }
+
+export interface FaqPair {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Every post ends with a "Frequently asked questions" h2 followed by h3/p
+ * pairs — pull those out for FAQPage structured data instead of requiring a
+ * separate faq field, since the content already has this shape.
+ */
+export function extractFaqPairs(content: BlogBlock[]): FaqPair[] {
+  const pairs: FaqPair[] = [];
+  let inFaqSection = false;
+
+  for (let i = 0; i < content.length; i++) {
+    const block = content[i];
+    if (block.type === "h2") {
+      inFaqSection = /frequently asked questions/i.test(block.text ?? "");
+      continue;
+    }
+    if (!inFaqSection || block.type !== "h3") continue;
+
+    const next = content[i + 1];
+    if (next?.type === "p" && next.text) {
+      pairs.push({ question: block.text ?? "", answer: next.text });
+    }
+  }
+
+  return pairs;
+}

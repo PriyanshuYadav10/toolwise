@@ -189,7 +189,7 @@ export const pdfTools: Tool[] = [
     privacyNote: PDF_PRIVACY_NOTE,
     seoTitle: "PDF to JPG Converter Online Free",
     seoDescription:
-      "Convert PDF pages to JPG images online for free, processed entirely in your browser with no upload.",
+      "Turn PDF pages into JPG images online for free — ideal for photos and scanned pages, processed entirely in your browser.",
     keywords: ["pdf to jpg", "convert pdf to image", "pdf to jpg converter"],
     relatedTools: ["jpg-to-pdf", "pdf-to-png", "image-compressor"],
     content: {
@@ -311,7 +311,7 @@ export const pdfTools: Tool[] = [
     privacyNote: PDF_PRIVACY_NOTE,
     seoTitle: "PDF to PNG Converter Online Free",
     seoDescription:
-      "Convert PDF pages to PNG images online for free, processed entirely in your browser with no upload.",
+      "Turn PDF pages into PNG images online for free — keeps sharp text and transparency, processed entirely in your browser.",
     keywords: ["pdf to png", "convert pdf to png", "pdf to png online free", "pdf page to image png"],
     relatedTools: ["pdf-to-jpg", "jpg-to-pdf", "image-converter"],
     content: {

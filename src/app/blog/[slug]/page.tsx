@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Calendar } from "lucide-react";
 import { getPublishedBlogPost, getRelatedBlogPosts } from "@/lib/db/blog-queries";
-import { extractHeadings, getHeadingId } from "@/lib/blog-content";
+import { extractFaqPairs, extractHeadings, getHeadingId } from "@/lib/blog-content";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -53,6 +53,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
   if (!post) notFound();
 
   const headings = extractHeadings(post.content);
+  const faqPairs = extractFaqPairs(post.content);
   const related = await getRelatedBlogPosts(post.slug, post.category, 3);
   const pageUrl = `${siteUrl}/blog/${post.slug}`;
 
@@ -79,10 +80,23 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
     ],
   };
 
+  const faqJsonLd = faqPairs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqPairs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
       <Breadcrumb items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
 
       <div className="mt-4">

@@ -172,7 +172,7 @@ export const imageTools: Tool[] = [
     runsInBrowser: true,
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "PNG to JPG Converter Online Free",
-    seoDescription: "Convert PNG images to JPG format online for free, processed entirely in your browser.",
+    seoDescription: "Convert PNG images to JPG online for free — flattens transparency and shrinks file size, processed entirely in your browser.",
     keywords: ["png to jpg", "convert png to jpg online", "png to jpg converter free", "png to jpeg online"],
     relatedTools: ["jpg-to-png", "jpg-to-webp", "image-compressor"],
     content: {
@@ -232,7 +232,7 @@ export const imageTools: Tool[] = [
     runsInBrowser: true,
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "JPG to PNG Converter Online Free",
-    seoDescription: "Convert JPG images to PNG format online for free, processed entirely in your browser.",
+    seoDescription: "Convert JPG images to PNG online for free for lossless quality and transparency support, processed entirely in your browser.",
     keywords: ["jpg to png", "convert jpg to png online", "jpg to png converter free", "jpeg to png online"],
     relatedTools: ["png-to-jpg", "image-converter"],
     content: {
@@ -257,7 +257,7 @@ export const imageTools: Tool[] = [
     runsInBrowser: true,
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "JPG to WebP Converter Online Free",
-    seoDescription: "Convert JPG images to WebP format online for free, processed entirely in your browser.",
+    seoDescription: "Convert JPG images to WebP online for free for smaller file sizes at the same visual quality, processed entirely in your browser.",
     keywords: ["jpg to webp", "convert jpg to webp", "jpg to webp online free", "jpeg to webp converter"],
     relatedTools: ["webp-to-jpg", "image-compressor"],
     content: {
@@ -313,7 +313,7 @@ export const imageTools: Tool[] = [
     runsInBrowser: true,
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "WebP to JPG Converter Online Free",
-    seoDescription: "Convert WebP images to JPG format online for free, processed entirely in your browser.",
+    seoDescription: "Convert WebP images to JPG online for free for maximum compatibility with older apps and platforms, processed entirely in your browser.",
     keywords: ["webp to jpg", "convert webp to jpg", "webp to jpg online free", "webp to jpeg converter"],
     relatedTools: ["jpg-to-webp", "image-converter"],
     content: {
