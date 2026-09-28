@@ -312,7 +312,7 @@ export const pdfTools: Tool[] = [
     seoTitle: "PDF to PNG Converter Online Free | Toolwise",
     seoDescription:
       "Convert PDF pages to PNG images online for free, processed entirely in your browser with no upload.",
-    keywords: ["pdf to png", "convert pdf to png"],
+    keywords: ["pdf to png", "convert pdf to png", "pdf to png online free", "pdf page to image png"],
     relatedTools: ["pdf-to-jpg", "jpg-to-pdf", "image-converter"],
     content: {
       intro:
@@ -343,7 +343,7 @@ export const pdfTools: Tool[] = [
     seoTitle: "Rotate PDF Online Free | Toolwise",
     seoDescription:
       "Rotate PDF pages online for free, processed entirely in your browser with no file upload.",
-    keywords: ["rotate pdf", "rotate pdf pages online"],
+    keywords: ["rotate pdf", "rotate pdf pages online", "rotate pdf online free", "fix pdf page orientation"],
     relatedTools: ["merge-pdf", "split-pdf", "compress-pdf"],
     content: {
       intro: "Rotate individual pages or the entire document by 90, 180 or 270 degrees to fix incorrectly scanned pages.",

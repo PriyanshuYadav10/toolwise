@@ -103,7 +103,7 @@ export const calculatorTools: Tool[] = [
     featured: true,
     popular: false,
     runsInBrowser: true,
-    seoTitle: "SIP Calculator – Estimate Mutual Fund Returns Free | Toolwise",
+    seoTitle: "SIP Calculator – Estimate Mutual Fund Returns | Toolwise",
     seoDescription:
       "Calculate the future value of your SIP investment, total invested amount and estimated returns with our free SIP calculator.",
     keywords: ["sip calculator", "mutual fund sip calculator", "sip return calculator"],
@@ -346,7 +346,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: true,
     runsInBrowser: true,
-    seoTitle: "Percentage Calculator – Free Online Percentage Tool | Toolwise",
+    seoTitle: "Percentage Calculator – Free Online Tool | Toolwise",
     seoDescription:
       "Calculate percentages, percentage increase, percentage decrease and ratios instantly with our free percentage calculator.",
     keywords: ["percentage calculator", "percentage increase calculator", "percentage change"],
@@ -465,7 +465,7 @@ export const calculatorTools: Tool[] = [
     seoTitle: "Compound Interest Calculator – Free Online Tool | Toolwise",
     seoDescription:
       "Calculate compound interest and maturity value with our free calculator, supporting monthly, quarterly and annual compounding.",
-    keywords: ["compound interest calculator", "ci calculator"],
+    keywords: ["compound interest calculator", "ci calculator", "compound interest formula", "interest calculator online free"],
     relatedTools: ["sip-calculator", "fd-calculator", "rd-calculator", "emi-calculator"],
     content: {
       intro:
@@ -556,7 +556,7 @@ export const calculatorTools: Tool[] = [
     seoTitle: "FD Calculator – Fixed Deposit Maturity Calculator | Toolwise",
     seoDescription:
       "Calculate your fixed deposit maturity value and interest earned with our free FD calculator.",
-    keywords: ["fd calculator", "fixed deposit calculator"],
+    keywords: ["fd calculator", "fixed deposit calculator", "fd interest calculator", "fd maturity calculator online"],
     relatedTools: ["rd-calculator", "compound-interest-calculator", "sip-calculator"],
     content: {
       intro:
@@ -598,7 +598,7 @@ export const calculatorTools: Tool[] = [
     seoTitle: "RD Calculator – Recurring Deposit Calculator | Toolwise",
     seoDescription:
       "Calculate your recurring deposit maturity value and interest earned with our free RD calculator.",
-    keywords: ["rd calculator", "recurring deposit calculator"],
+    keywords: ["rd calculator", "recurring deposit calculator", "rd maturity calculator", "recurring deposit interest calculator"],
     relatedTools: ["fd-calculator", "sip-calculator", "compound-interest-calculator"],
     content: {
       intro:
@@ -640,7 +640,7 @@ export const calculatorTools: Tool[] = [
     seoTitle: "Gratuity Calculator – Calculate Gratuity Amount | Toolwise",
     seoDescription:
       "Calculate your gratuity amount based on last drawn salary and years of service with our free gratuity calculator.",
-    keywords: ["gratuity calculator", "gratuity calculation india"],
+    keywords: ["gratuity calculator", "gratuity calculation india", "gratuity calculator online free", "employee gratuity formula"],
     relatedTools: ["pf-calculator", "salary-calculator", "hra-calculator"],
     content: {
       intro:
@@ -731,7 +731,7 @@ export const calculatorTools: Tool[] = [
     seoTitle: "HRA Calculator – Calculate HRA Tax Exemption | Toolwise",
     seoDescription:
       "Calculate your HRA tax exemption based on salary, rent paid and city with our free HRA calculator.",
-    keywords: ["hra calculator", "hra exemption calculator"],
+    keywords: ["hra calculator", "hra exemption calculator", "house rent allowance calculator", "hra tax exemption calculator online"],
     relatedTools: ["salary-calculator", "gst-calculator", "gratuity-calculator"],
     content: {
       intro:

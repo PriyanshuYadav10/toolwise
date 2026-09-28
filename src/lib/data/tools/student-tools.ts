@@ -82,7 +82,7 @@ export const studentTools: Tool[] = [
     runsInBrowser: true,
     seoTitle: "GPA Calculator – Free Online Tool | Toolwise",
     seoDescription: "Calculate your semester GPA from course grades and credit hours with our free GPA calculator.",
-    keywords: ["gpa calculator", "calculate gpa online"],
+    keywords: ["gpa calculator", "calculate gpa online", "grade point average calculator", "gpa calculator free"],
     relatedTools: ["cgpa-calculator", "marks-percentage-calculator"],
     content: {
       intro:
@@ -116,7 +116,7 @@ export const studentTools: Tool[] = [
     seoTitle: "Attendance Calculator – Free Online Tool | Toolwise",
     seoDescription:
       "Calculate your attendance percentage and how many classes you can miss with our free attendance calculator.",
-    keywords: ["attendance calculator", "attendance percentage calculator"],
+    keywords: ["attendance calculator", "attendance percentage calculator", "college attendance calculator", "calculate attendance percentage online"],
     relatedTools: ["cgpa-calculator", "marks-percentage-calculator", "study-time-calculator"],
     content: {
       intro:
@@ -182,7 +182,7 @@ export const studentTools: Tool[] = [
     seoTitle: "Marks Percentage Calculator – Free Online Tool | Toolwise",
     seoDescription:
       "Calculate your marks percentage across subjects instantly with our free marks percentage calculator.",
-    keywords: ["marks percentage calculator", "percentage calculator for students"],
+    keywords: ["marks percentage calculator", "percentage calculator for students", "calculate marks percentage", "exam percentage calculator online"],
     relatedTools: ["percentage-calculator", "cgpa-calculator", "attendance-calculator"],
     content: {
       intro:

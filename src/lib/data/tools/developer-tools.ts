@@ -233,7 +233,7 @@ export const developerTools: Tool[] = [
     seoTitle: "Base64 Decoder Online – Free & Instant | Toolwise",
     seoDescription:
       "Decode Base64 strings to plain text online for free, instantly and entirely in your browser.",
-    keywords: ["base64 decoder", "decode base64 online"],
+    keywords: ["base64 decoder", "decode base64 online", "base64 to text converter", "base64 string decoder free"],
     relatedTools: ["base64-encoder", "url-decoder", "jwt-decoder"],
     content: {
       intro:
@@ -482,7 +482,7 @@ export const developerTools: Tool[] = [
     runsInBrowser: true,
     seoTitle: "URL Decoder Online – Free Percent Decoding Tool | Toolwise",
     seoDescription: "Decode percent-encoded URL strings back to readable text online for free, instantly.",
-    keywords: ["url decoder", "decode url online"],
+    keywords: ["url decoder", "decode url online", "percent decode online", "uri decoder free"],
     relatedTools: ["url-encoder", "base64-decoder"],
     content: {
       intro: "This tool decodes percent-encoded URL strings back into their original, readable text.",

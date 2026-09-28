@@ -144,7 +144,7 @@ export const imageTools: Tool[] = [
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "Image Cropper Online Free | Toolwise",
     seoDescription: "Crop images online for free with a draggable selection box, processed in your browser.",
-    keywords: ["image cropper", "crop image online"],
+    keywords: ["image cropper", "crop image online", "crop photo online free", "image crop tool"],
     relatedTools: ["image-resizer", "image-compressor"],
     content: {
       intro: "Drag to select the exact area you want to keep, with optional fixed aspect ratios for profile photos, covers or thumbnails.",
@@ -173,7 +173,7 @@ export const imageTools: Tool[] = [
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "PNG to JPG Converter Online Free | Toolwise",
     seoDescription: "Convert PNG images to JPG format online for free, processed entirely in your browser.",
-    keywords: ["png to jpg", "convert png to jpg online"],
+    keywords: ["png to jpg", "convert png to jpg online", "png to jpg converter free", "png to jpeg online"],
     relatedTools: ["jpg-to-png", "jpg-to-webp", "image-compressor"],
     content: {
       intro:
@@ -233,7 +233,7 @@ export const imageTools: Tool[] = [
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "JPG to PNG Converter Online Free | Toolwise",
     seoDescription: "Convert JPG images to PNG format online for free, processed entirely in your browser.",
-    keywords: ["jpg to png", "convert jpg to png online"],
+    keywords: ["jpg to png", "convert jpg to png online", "jpg to png converter free", "jpeg to png online"],
     relatedTools: ["png-to-jpg", "image-converter"],
     content: {
       intro: "Convert JPG images to PNG format for lossless quality, ready for further editing.",
@@ -258,7 +258,7 @@ export const imageTools: Tool[] = [
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "JPG to WebP Converter Online Free | Toolwise",
     seoDescription: "Convert JPG images to WebP format online for free, processed entirely in your browser.",
-    keywords: ["jpg to webp", "convert jpg to webp"],
+    keywords: ["jpg to webp", "convert jpg to webp", "jpg to webp online free", "jpeg to webp converter"],
     relatedTools: ["webp-to-jpg", "image-compressor"],
     content: {
       intro:
@@ -314,7 +314,7 @@ export const imageTools: Tool[] = [
     privacyNote: IMAGE_PRIVACY_NOTE,
     seoTitle: "WebP to JPG Converter Online Free | Toolwise",
     seoDescription: "Convert WebP images to JPG format online for free, processed entirely in your browser.",
-    keywords: ["webp to jpg", "convert webp to jpg"],
+    keywords: ["webp to jpg", "convert webp to jpg", "webp to jpg online free", "webp to jpeg converter"],
     relatedTools: ["jpg-to-webp", "image-converter"],
     content: {
       intro: "Convert WebP images to JPG for compatibility with older software or tools that don't support WebP.",
@@ -340,7 +340,7 @@ export const imageTools: Tool[] = [
     seoTitle: "Image Format Converter Online Free | Toolwise",
     seoDescription:
       "Convert images between JPG, PNG and WebP formats online for free, processed entirely in your browser.",
-    keywords: ["image converter", "convert image format online"],
+    keywords: ["image converter", "convert image format online", "image format converter free", "convert image online"],
     relatedTools: ["png-to-jpg", "jpg-to-webp", "webp-to-jpg"],
     content: {
       intro: "Upload any image and choose your target format — JPG, PNG or WebP — all converted locally in your browser.",
