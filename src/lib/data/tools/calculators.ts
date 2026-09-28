@@ -15,7 +15,7 @@ export const calculatorTools: Tool[] = [
     featured: true,
     popular: true,
     runsInBrowser: true,
-    seoTitle: "EMI Calculator – Calculate Monthly Loan EMI Free | Toolwise",
+    seoTitle: "EMI Calculator – Calculate Monthly Loan EMI Free",
     seoDescription:
       "Calculate your monthly EMI, total interest and total payment instantly with our free EMI calculator for home, car and personal loans.",
     keywords: ["emi calculator", "loan emi", "home loan emi", "car loan emi calculator"],
@@ -103,7 +103,7 @@ export const calculatorTools: Tool[] = [
     featured: true,
     popular: false,
     runsInBrowser: true,
-    seoTitle: "SIP Calculator – Estimate Mutual Fund Returns | Toolwise",
+    seoTitle: "SIP Calculator – Estimate Mutual Fund Returns",
     seoDescription:
       "Calculate the future value of your SIP investment, total invested amount and estimated returns with our free SIP calculator.",
     keywords: ["sip calculator", "mutual fund sip calculator", "sip return calculator"],
@@ -190,7 +190,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: true,
     runsInBrowser: true,
-    seoTitle: "GST Calculator – Calculate GST Amount Instantly | Toolwise",
+    seoTitle: "GST Calculator – Calculate GST Amount Instantly",
     seoDescription:
       "Add or remove GST from any amount with our free GST calculator. Supports 5%, 12%, 18% and 28% slabs with CGST/SGST split.",
     keywords: ["gst calculator", "gst calculator india", "cgst sgst calculator"],
@@ -277,7 +277,7 @@ export const calculatorTools: Tool[] = [
     featured: true,
     popular: true,
     runsInBrowser: true,
-    seoTitle: "Salary Calculator – CTC to In-Hand Salary | Toolwise",
+    seoTitle: "Salary Calculator – CTC to In-Hand Salary",
     seoDescription:
       "Convert your CTC to monthly in-hand salary with our free salary calculator, including PF, professional tax and deductions.",
     keywords: ["salary calculator", "ctc calculator", "in hand salary calculator", "take home salary"],
@@ -346,7 +346,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: true,
     runsInBrowser: true,
-    seoTitle: "Percentage Calculator – Free Online Tool | Toolwise",
+    seoTitle: "Percentage Calculator – Free Online Tool",
     seoDescription:
       "Calculate percentages, percentage increase, percentage decrease and ratios instantly with our free percentage calculator.",
     keywords: ["percentage calculator", "percentage increase calculator", "percentage change"],
@@ -419,7 +419,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "Age Calculator – Calculate Exact Age Free | Toolwise",
+    seoTitle: "Age Calculator – Calculate Exact Age Free",
     seoDescription:
       "Calculate your exact age in years, months and days from your date of birth with our free online age calculator.",
     keywords: ["age calculator", "date of birth calculator", "calculate age"],
@@ -462,7 +462,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "Compound Interest Calculator – Free Online Tool | Toolwise",
+    seoTitle: "Compound Interest Calculator – Free Online Tool",
     seoDescription:
       "Calculate compound interest and maturity value with our free calculator, supporting monthly, quarterly and annual compounding.",
     keywords: ["compound interest calculator", "ci calculator", "compound interest formula", "interest calculator online free"],
@@ -511,7 +511,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "Loan Calculator – EMI & Amortisation Schedule | Toolwise",
+    seoTitle: "Loan Calculator – EMI & Amortisation Schedule",
     seoDescription:
       "Calculate loan EMI and view a full month-by-month amortisation schedule with our free loan calculator.",
     keywords: ["loan calculator", "amortisation schedule", "loan repayment calculator"],
@@ -553,7 +553,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "FD Calculator – Fixed Deposit Maturity Calculator | Toolwise",
+    seoTitle: "FD Calculator – Fixed Deposit Maturity Calculator",
     seoDescription:
       "Calculate your fixed deposit maturity value and interest earned with our free FD calculator.",
     keywords: ["fd calculator", "fixed deposit calculator", "fd interest calculator", "fd maturity calculator online"],
@@ -595,7 +595,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "RD Calculator – Recurring Deposit Calculator | Toolwise",
+    seoTitle: "RD Calculator – Recurring Deposit Calculator",
     seoDescription:
       "Calculate your recurring deposit maturity value and interest earned with our free RD calculator.",
     keywords: ["rd calculator", "recurring deposit calculator", "rd maturity calculator", "recurring deposit interest calculator"],
@@ -637,7 +637,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "Gratuity Calculator – Calculate Gratuity Amount | Toolwise",
+    seoTitle: "Gratuity Calculator – Calculate Gratuity Amount",
     seoDescription:
       "Calculate your gratuity amount based on last drawn salary and years of service with our free gratuity calculator.",
     keywords: ["gratuity calculator", "gratuity calculation india", "gratuity calculator online free", "employee gratuity formula"],
@@ -686,7 +686,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "PF Calculator – EPF Maturity Calculator | Toolwise",
+    seoTitle: "PF Calculator – EPF Maturity Calculator",
     seoDescription:
       "Estimate your EPF maturity amount at retirement with our free PF calculator based on monthly contributions.",
     keywords: ["pf calculator", "epf calculator", "provident fund calculator"],
@@ -728,7 +728,7 @@ export const calculatorTools: Tool[] = [
     status: "live",
     popular: false,
     runsInBrowser: true,
-    seoTitle: "HRA Calculator – Calculate HRA Tax Exemption | Toolwise",
+    seoTitle: "HRA Calculator – Calculate HRA Tax Exemption",
     seoDescription:
       "Calculate your HRA tax exemption based on salary, rent paid and city with our free HRA calculator.",
     keywords: ["hra calculator", "hra exemption calculator", "house rent allowance calculator", "hra tax exemption calculator online"],

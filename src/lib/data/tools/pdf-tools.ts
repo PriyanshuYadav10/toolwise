@@ -18,7 +18,7 @@ export const pdfTools: Tool[] = [
     popular: true,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "Merge PDF Files Online Free – No Upload | Toolwise",
+    seoTitle: "Merge PDF Files Online Free – No Upload",
     seoDescription:
       "Merge multiple PDF files into one document for free, processed entirely in your browser with no file upload.",
     keywords: ["merge pdf", "combine pdf files", "pdf merger online"],
@@ -84,7 +84,7 @@ export const pdfTools: Tool[] = [
     popular: false,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "Split PDF Online Free – Extract Pages | Toolwise",
+    seoTitle: "Split PDF Online Free – Extract Pages",
     seoDescription:
       "Split a PDF into multiple files or extract specific pages for free, processed entirely in your browser.",
     keywords: ["split pdf", "extract pdf pages", "pdf splitter online"],
@@ -121,7 +121,7 @@ export const pdfTools: Tool[] = [
     popular: true,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "Compress PDF Online Free – Reduce File Size | Toolwise",
+    seoTitle: "Compress PDF Online Free – Reduce File Size",
     seoDescription:
       "Compress PDF files online for free to reduce file size, processed entirely in your browser with no upload.",
     keywords: ["compress pdf", "reduce pdf size", "pdf compressor online"],
@@ -187,7 +187,7 @@ export const pdfTools: Tool[] = [
     popular: true,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "PDF to JPG Converter Online Free | Toolwise",
+    seoTitle: "PDF to JPG Converter Online Free",
     seoDescription:
       "Convert PDF pages to JPG images online for free, processed entirely in your browser with no upload.",
     keywords: ["pdf to jpg", "convert pdf to image", "pdf to jpg converter"],
@@ -248,7 +248,7 @@ export const pdfTools: Tool[] = [
     popular: true,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "JPG to PDF Converter Online Free | Toolwise",
+    seoTitle: "JPG to PDF Converter Online Free",
     seoDescription:
       "Convert JPG images to a single PDF document online for free, processed entirely in your browser.",
     keywords: ["jpg to pdf", "image to pdf converter", "convert jpg to pdf free"],
@@ -309,7 +309,7 @@ export const pdfTools: Tool[] = [
     popular: false,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "PDF to PNG Converter Online Free | Toolwise",
+    seoTitle: "PDF to PNG Converter Online Free",
     seoDescription:
       "Convert PDF pages to PNG images online for free, processed entirely in your browser with no upload.",
     keywords: ["pdf to png", "convert pdf to png", "pdf to png online free", "pdf page to image png"],
@@ -340,7 +340,7 @@ export const pdfTools: Tool[] = [
     popular: false,
     runsInBrowser: true,
     privacyNote: PDF_PRIVACY_NOTE,
-    seoTitle: "Rotate PDF Online Free | Toolwise",
+    seoTitle: "Rotate PDF Online Free",
     seoDescription:
       "Rotate PDF pages online for free, processed entirely in your browser with no file upload.",
     keywords: ["rotate pdf", "rotate pdf pages online", "rotate pdf online free", "fix pdf page orientation"],
